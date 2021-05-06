@@ -38,6 +38,10 @@ app.get('/index.html', function (req, res) {
 	res.render('index', { new_item: newItem });
 });
 
+app.get('/ad-listing.html', function (req, res) {
+	res.render('ad-listing');
+});
+
 // app.get('/category.html', function (req, res) {
 // 	res.render('category');
 // });
@@ -60,6 +64,29 @@ app.get('/index.html', function (req, res) {
 // });
 
 app.get('/category.html', (req, res) => {
+	let sql = 'select * from Inventory';
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+			console.log("DATA BHEJ DIYA MENE NISHTHA")
+			// console.log(rows)
+			console.log("DONT SCOLD ME")
+			// res.send("Done");
+		}
+		console.log(rows[0]['Type']);
+
+		for (let i = 0; i < rows.length; i++) {
+			items.push(rows[i]);
+		}
+		res.render('category', { inventory: items });
+		console.log(items);
+	})
+
+	// console.log(post)
+});
+
+app.get('/ad-listing.html', (req, res) => {
 	let sql = 'select * from Inventory';
 	connection.query(sql, (err, rows) => {
 		if (err) {
