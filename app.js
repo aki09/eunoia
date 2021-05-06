@@ -5,15 +5,15 @@ const bodyParser = require("body-parser");
 const app = express();
 var items = [];
 
-var connection = mysql.createConnection({
+/* var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'nishtha',
 	database: 'dbdb',
 	port: 3306
-});
+}); */
 
-connection.connect((err) => {
+/* connection.connect((err) => {
 	if (err) {
 		console.log("ERRE")
 	}
@@ -21,7 +21,7 @@ connection.connect((err) => {
 		console.log("HELLOO NISHTHAAA")
 	}
 });
-
+ */
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
