@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 	password: 'nishtha',
 	database: 'dbdb',
 	port: 3306
-}); 
+});
 
 connection.connect((err) => {
 	if (err) {
@@ -86,9 +86,15 @@ app.get('/category.html', (req, res) => {
 	// console.log(post)
 });
 
-app.get('/ad-listing.html', (req, res) => {
-	let sql = 'select * from Inventory';
-	connection.query(sql, (err, rows) => {
+app.post('/ad-listing.html', (req, res) => {
+	var item = req.body.type;
+	var status = req.body.status;
+	var ig = req.body.ig;
+	var condition = req.body.condition;
+	var price = req.body.price;
+	let sql = "insert into Inventory set ?"
+	let post = { Type: item, Status: status, Price: price, Item_condition: condition, IG_Link: ig }
+	connection.query(sql, post, (err, rows) => {
 		if (err) {
 			throw err
 		} else {
@@ -96,16 +102,10 @@ app.get('/ad-listing.html', (req, res) => {
 			// console.log(rows)
 			console.log("DONT SCOLD ME")
 			// res.send("Done");
+			console.log('solddd');
 		}
-		console.log(rows[0]['Type']);
-
-		for (let i = 0; i < rows.length; i++) {
-			items.push(rows[i]);
-		}
-		res.render('category', { inventory: items });
-		console.log(items);
 	})
-
+	res.redirect('/ad-listing.html');
 	// console.log(post)
 });
 
