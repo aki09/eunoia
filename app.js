@@ -38,6 +38,10 @@ app.get('/index.html', function (req, res) {
 	res.render('index', { new_item: newItem });
 });
 
+app.get('/dashboard.html', function (req, res) {
+	res.render('dashboard');
+});
+
 app.get('/ad-listing.html', function (req, res) {
 	res.render('ad-listing');
 });
