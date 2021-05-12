@@ -43,6 +43,18 @@ app.get('/dashboard.html', function (req, res) {
 	res.render('dashboard');
 });
 
+app.get('/login.html', function (req, res) {
+	res.render('login');
+});
+
+app.get('/blog.html', function (req, res) {
+	res.render('blog');
+});
+
+app.get('/user-profile.html', function (req, res) {
+	res.render('user-profile');
+});
+
 app.get('/ad-listing.html', function (req, res) {
 	res.render('ad-listing');
 });
