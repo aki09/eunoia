@@ -50,6 +50,10 @@ app.get('/ad-orders.html', function (req, res) {
 	res.render('ad-orders');
 });
 
+app.get('/customer.html', function (req, res) {
+	res.render('customers');
+});
+
 // app.get('/category.html', function (req, res) {
 // 	res.render('category');
 // });
