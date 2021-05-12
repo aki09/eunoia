@@ -46,6 +46,10 @@ app.get('/ad-listing.html', function (req, res) {
 	res.render('ad-listing');
 });
 
+app.get('/ad-orders.html', function (req, res) {
+	res.render('ad-orders');
+});
+
 // app.get('/category.html', function (req, res) {
 // 	res.render('category');
 // });
