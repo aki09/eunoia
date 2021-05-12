@@ -4,8 +4,9 @@ const bodyParser = require("body-parser");
 
 const app = express();
 var items = [];
+var customers = [];
 
-/* var connection = mysql.createConnection({
+var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'nishtha',
@@ -20,7 +21,7 @@ connection.connect((err) => {
 	else {
 		console.log("HELLOO NISHTHAAA")
 	}
-}); */
+});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,32 +51,12 @@ app.get('/ad-orders.html', function (req, res) {
 	res.render('ad-orders');
 });
 
-app.get('/customer.html', function (req, res) {
-	res.render('customers');
+app.get('/ad-customer.html', function (req, res) {
+	res.render('ad-customers');
 });
 
-// app.get('/category.html', function (req, res) {
-// 	res.render('category');
-// });
-
-// app.get('/category.html', (req, res) => {
-// 	let sql = 'select * from Inventory';
-// 	connection.query(sql, (err, rows) => {
-// 		if (err) {
-// 			throw err
-// 		} else {
-// 			console.log("DATA BHEJ DIYA MENE NISHTHA")
-// 			// console.log(rows)
-// 			console.log("DONT SCOLD ME")
-// 			res.send("Done");
-// 		}
-// 		console.log(rows[0]['Type']);
-// 	})
-
-// 	// console.log(post)
-// });
-
 app.get('/category.html', (req, res) => {
+	items = [];
 	let sql = 'select * from Inventory';
 	connection.query(sql, (err, rows) => {
 		if (err) {
@@ -98,6 +79,26 @@ app.get('/category.html', (req, res) => {
 	// console.log(post)
 });
 
+app.get('/customer.html', function (req, res) {
+	let sql = 'select * from customers';
+	customers = [];
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+			console.log("DATA BHEJ DIYA MENE NISHTHA")
+			// console.log(rows)
+			console.log("DONT SCOLD ME")
+			// res.send("Done");
+		}
+		for (let i = 0; i < rows.length; i++) {
+			customers.push(rows[i]);
+		}
+		console.log(customers);
+		res.render('customers', { customers: customers });	
+	})
+});
+
 app.post('/ad-listing.html', (req, res) => {
 	var item = req.body.type;
 	var status = req.body.status;
@@ -118,6 +119,30 @@ app.post('/ad-listing.html', (req, res) => {
 		}
 	})
 	res.redirect('/ad-listing.html');
+	// console.log(post)
+});
+
+app.post('/ad-customer.html', (req, res) => {
+	var name = req.body.name;
+	var num = req.body.num;
+	var add = req.body.add;
+	var state = req.body.state;
+	var ig = req.body.ig;
+	var email = req.body.email;
+	let sql = "insert into customers set ?"
+	let post = { Name: name, Instagram_Handle: ig, Address: add, State: state, Contact: num, Email_ID: email }
+	connection.query(sql, post, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+			console.log("DATA BHEJ DIYA MENE NISHTHA")
+			// console.log(rows)
+			console.log("DONT SCOLD ME")
+			// res.send("Done");
+			console.log('solddd');
+		}
+	})
+	res.redirect('/ad-customer.html');
 	// console.log(post)
 });
 
