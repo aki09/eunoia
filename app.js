@@ -67,6 +67,10 @@ app.get('/ad-customer.html', function (req, res) {
 	res.render('ad-customers');
 });
 
+app.get('/about-us.html', function(req, res) {
+	res.render('about-us');
+});
+
 app.get('/category.html', (req, res) => {
 	items = [];
 	let sql = 'select * from Inventory';
