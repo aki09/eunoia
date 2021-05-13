@@ -6,7 +6,7 @@ const app = express();
 var items = [];
 var customers = [];
 
-var connection = mysql.createConnection({
+/* var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'nishtha',
@@ -21,7 +21,7 @@ connection.connect((err) => {
 	else {
 		console.log("HELLOO NISHTHAAA")
 	}
-});
+}); */
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));

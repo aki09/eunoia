@@ -1084,15 +1084,16 @@ ul.pagination .active a {
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: .4px;
+
 }
 
 .dashboard-container .product-dashboard-table td {
   vertical-align: middle;
-  padding: 40px 0;
+  padding: 10px 30px;
 }
 
 .dashboard-container .product-thumb {
-  width: 15%;
+  width: 5%;
 }
 
 .dashboard-container tbody tr:hover .action a {
@@ -1596,7 +1597,6 @@ ul.pagination .active a {
   display: flex;
   bottom: -50px;
 }
-
 .product-slider .slick-dots li {
   display: inline-block;
   width: 100%;
@@ -1618,7 +1618,7 @@ ul.pagination .active a {
 }
 
 .product-table {
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .product-table tr td:first-child {
@@ -1626,7 +1626,7 @@ ul.pagination .active a {
 }
 
 .product-table tr td {
-  padding-left: 25px;
+  padding-left: 5px;
 }
 
 .product-review img {
@@ -2699,5 +2699,24 @@ form textarea {
 .top-to a:hover {
   text-decoration: none;
 }
+
+.button1 {
+  background-color: #f7f7f7; /* Green */
+  border: none;
+  color: black;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.button1:hover {
+  background-color: RoyalBlue;
+  color:white;
+}
+
 
 /*# sourceMappingURL=maps/style.css.map */
