@@ -30,89 +30,81 @@
                     <!-- Recently Favorited -->
                     <div class="widget dashboard-container my-adslist">
                         <!-- <h2 class="widget-header">ORDER - 1</h2> -->
-                        <table class="table table-responsive product-dashboard-table">
-                            <!-- <thead> -->
-                            <tr>
-                                <th rowspan="">Order - 1
-                                </th>
-                                <th>
-                                <td class="action" data-title="Action">
-                                    <div class="">
-                                        <ul class="list-inline justify-content-center">
-                                            <button type="submit" class="button1"><i class="fa fa-pencil"></i></button>
-                                        </ul>
-                                    </div>
-                                </td>
-                                </th>
-                            </tr>
-                            <td class="product-details">
-                                <span class=""><strong>Order ID:</strong>ng3D5hAMHPajQrM</span>
-                                <span><strong>Date: </strong><time>Jun 27, 2017</time></span>
-                                <span class=""><strong>Amount:</strong> ₹500</span>
-                                <span class=""><strong>CustName: </strong>Ayush Anand</span>
-                                <span class="location"><strong>Address: </strong>New Delhi</span>
-                                <span class="status active"><strong>Status: </strong>Delivered</span>
-                                <span class=""><strong>PayMode: </strong>UPI</span>
-                                <span class=""><strong>PayDate: </strong><time>Jun 27, 2017</time></span>
-
-                            </td>
-                            <tbody>
+                        <% for (var i=0; i<orders.length; i++) { %>
+                            <table class="table table-responsive product-dashboard-table">
+                                <!-- <thead> -->
                                 <tr>
-
-                                    <td class="product-thumb">
-                                        <img width="200px" height="auto" src="images/products/products-1.jpg"
-                                            alt="image description">
-                                    </td>
-                                    <td class="product-details">
-                                        <h3 class="title">Macbook Pro 15inch</h3>
-                                        <span class="add-id"><strong>Item ID:</strong> ng3D5hAMHPajQrM</span>
-                                        <span class="add-id"><strong>Item Type:</strong> Clothing</span>
-                                        <span class="add-id"><strong>Item Price:</strong> ₹200</span>
-
-
-                                    </td>
+                                    <th rowspan="">Order <%= i + 1%>
+                                    </th>
+                                    <th>
                                     <td class="action" data-title="Action">
                                         <div class="">
                                             <ul class="list-inline justify-content-center">
-
-
-
                                                 <button type="submit" class="button1"><i
-                                                        class="fa fa-trash"></i></button>
+                                                        class="fa fa-pencil"></i></button>
                                             </ul>
                                         </div>
                                     </td>
+                                    </th>
                                 </tr>
+                                <td class="product-details">
+                                    <span class=""><strong>Order ID:</strong>
+                                        <%= orders[i]['Order_ID']%>
+                                    </span>
+                                    <span><strong>Date: </strong><time>
+                                            <%= orders[i]['Order_Date']%>
+                                        </time></span>
+                                    <span class=""><strong>Amount:</strong>
+                                        <%= orders[i]['Amount']%>
+                                    </span>
+                                    <span class=""><strong>Name: </strong>
+                                        <%= customers[i]['Name']%>
+                                    </span>
+                                    <span class="location"><strong>Address: </strong>
+                                        <%= orders[i]['Delivery_Address']%>
+                                    </span>
+                                    <span class="status active"><strong>Status: </strong>
+                                        <%= orders[i]['Order_Status']%>
+                                    </span>
+                                    <span class=""><strong>PayMode: </strong>
+                                        <%= payment[i]['Payment_Mode']%>
+                                    </span>
+                                    <span class=""><strong>PayDate: </strong><time>
+                                            <%= payment[i]['Payment_Date']%>
+                                        </time></span>
+
+                                </td>
+                                <tbody>
+                                    <% for (var i=0; i<1; i++) { %>
+                                        <tr>
+                                            <!-- <td class="product-thumb">
+                                                <img width="200px" height="auto" src="images/products/products-1.jpg"
+                                                    alt="image description">
+                                            </td> -->
+                                            <td class="product-details">
+                                                <h3 class="title"><%= order_item[i]['Type']%></h3>
+                                                <span class="add-id"><strong>Item ID:</strong> <%= order_item[i]['Item_ID']%></span>
+                                                <!-- <span class="add-id"><strong>Item Type:</strong> Clothing</span> -->
+                                                <span class="add-id"><strong>Item Price:</strong> <%= order_item[i]['Price']%></span>
+                                            </td>
+                                            <td class="action" data-title="Action">
+                                                <div class="">
+                                                    <ul class="list-inline justify-content-center">
+                                                        <button type="submit" class="button1"><i
+                                                                class="fa fa-trash"></i></button>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <%}%>
                     </div>
-                    <tr>
-
-                        <td class="product-thumb">
-
-                            <img width="200px" height="auto" src="images/products/products-2.jpg"
-                                alt="image description">
-                        </td>
-                        <td class="product-details">
-
-                            <h3 class="title">Study Table Combo</h3>
-                            <span class="add-id"><strong>Item ID:</strong> ng3D5hAMHPajQrM</span>
-                            <span class="add-id"><strong>Item Type:</strong> Jewellery</span>
-                            <span class="add-id"><strong>Item Price:</strong> ₹300</span>
-                        </td>
-                        <td class="action" data-title="Action">
-                            <div class="">
-                                <ul class="list-inline justify-content-center">
-                                    <button type="submit" class="button1"><i class="fa fa-trash"></i></button>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
                     <tr>
                 </div>
                 </td>
                 </tr>
                 </tbody>
                 </table>
-
+                <%}%>
             </div>
 
             <!-- pagination -->

@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const app = express();
 var items = [];
 var customers = [];
+var orders = [];
+var payment = [];
+var order_item = [];
 
 var connection = mysql.createConnection({
 	host: 'localhost',
@@ -39,9 +42,9 @@ app.get('/index.html', function (req, res) {
 	res.render('index', { new_item: newItem });
 });
 
-app.get('/dashboard.html', function (req, res) {
-	res.render('dashboard');
-});
+// app.get('/dashboard.html', function (req, res) {
+// 	res.render('dashboard');
+// });
 
 app.get('/login.html', function (req, res) {
 	res.render('login');
@@ -67,7 +70,7 @@ app.get('/ad-customer.html', function (req, res) {
 	res.render('ad-customers');
 });
 
-app.get('/about-us.html', function(req, res) {
+app.get('/about-us.html', function (req, res) {
 	res.render('about-us');
 });
 
@@ -111,7 +114,67 @@ app.get('/customer.html', function (req, res) {
 			customers.push(rows[i]);
 		}
 		console.log(customers);
-		res.render('customers', { customers: customers });	
+		res.render('customers', { customers: customers });
+	})
+});
+
+app.get('/dashboard.html', function (req, res) {
+	let sql = 'select Order_ID, DATE_FORMAT(Order_Date, \'%d/%m/%y\') "Order_Date", Amount, Delivery_Address, Order_Status from orders order by Order_ID';
+	orders = [];
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+			console.log("DATA BHEJ DIYA MENE NISHTHA")
+			// console.log(rows)
+			console.log("DONT SCOLD ME")
+			// res.send("Done");
+		}
+		var query = "SELECT Name FROM Customers where Customer_ID in( SELECT Customer_ID FROM Customer_Order order by Order_ID)"
+		connection.query(query, (err, data) => {
+			if (err) {
+				throw err
+			} else {
+			}
+			for (let i = 0; i < data.length; i++) {
+				customers.push(data[i]);
+			}
+			console.log("customers here")
+			console.log(customers)
+			for (let i = 0; i < rows.length; i++) {
+				orders.push(rows[i]);
+			}
+			console.log(orders)
+			var query = "SELECT Payment_Mode, DATE_FORMAT(Payment_Date, '%d/%m/%y') \"Payment_Date\" FROM Payment order by Order_ID "
+			connection.query(query, (err, data) => {
+				if (err) {
+					throw err
+				} else {
+				}
+				for (let index = 0; index < data.length; index++) {
+					payment.push(data[index])
+				}
+				console.log(data)
+				console.log(payment)
+
+				var query = "SELECT Item_ID,Type,Price FROM Inventory WHERE Item_ID IN ( SELECT Item_ID FROM Order_List GROUP BY Order_ID)";
+				connection.query(query, (err, data) => {
+					if (err) {
+						throw err
+					} else {
+					}
+					for (let index = 0; index < data.length; index++) {
+						order_item.push(data[index])
+					}
+					res.render('dashboard', { orders: orders, customers: customers, payment: payment, order_item: order_item });
+				})
+
+			})
+
+			console.log(rows)
+
+		})
+
 	})
 });
 
