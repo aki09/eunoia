@@ -24,15 +24,15 @@
         <!-- Container Start -->
         <div class="container">
             <!-- Row Start -->
+            <% for (var i=0; i<orders.length; i++) { %>
             <div class="row">
-
+                
                 <div class="col-md-10 offset-md-60 col-lg-40 offset-lg-60">
                     <!-- Recently Favorited -->
                     <div class="widget dashboard-container my-adslist">
                         <!-- <h2 class="widget-header">ORDER - 1</h2> -->
-                        <% for (var i=0; i<orders.length; i++) { %>
                             <table class="table table-responsive product-dashboard-table">
-                                <!-- <thead> -->
+                                
                                 <tr>
                                     <th rowspan="">Order <%= i + 1%>
                                     </th>
@@ -77,15 +77,18 @@
                                 <tbody>
                                     <% for (var i=0; i<1; i++) { %>
                                         <tr>
-                                            <!-- <td class="product-thumb">
-                                                <img width="200px" height="auto" src="images/products/products-1.jpg"
-                                                    alt="image description">
-                                            </td> -->
+                                            
                                             <td class="product-details">
-                                                <h3 class="title"><%= order_item[i]['Type']%></h3>
-                                                <span class="add-id"><strong>Item ID:</strong> <%= order_item[i]['Item_ID']%></span>
-                                                <!-- <span class="add-id"><strong>Item Type:</strong> Clothing</span> -->
-                                                <span class="add-id"><strong>Item Price:</strong> <%= order_item[i]['Price']%></span>
+                                                <h3 class="title">
+                                                    <%= order_item[i]['Type']%>
+                                                </h3>
+                                                <span class="add-id"><strong>Item ID:</strong>
+                                                    <%= order_item[i]['Item_ID']%>
+                                                </span>
+                                                
+                                                <span class="add-id"><strong>Item Price:</strong>
+                                                    <%= order_item[i]['Price']%>
+                                                </span>
                                             </td>
                                             <td class="action" data-title="Action">
                                                 <div class="">
@@ -97,16 +100,14 @@
                                             </td>
                                         </tr>
                                         <%}%>
+                                </tbody>
+                            </table>
+                            
                     </div>
-                    <tr>
                 </div>
-                </td>
-                </tr>
-                </tbody>
-                </table>
-                <%}%>
+               
             </div>
-
+            <%}%>
             <!-- pagination -->
             <div class="pagination justify-content-center">
                 <nav aria-label="Page navigation example">
@@ -132,9 +133,9 @@
             <!-- pagination -->
 
         </div>
-        </div>
+        <!-- </div> -->
         <!-- Row End -->
-        </div>
+        <!-- </div> -->
         <!-- Container End -->
     </section>
     <!--============================
