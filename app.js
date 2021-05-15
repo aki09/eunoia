@@ -20,7 +20,7 @@ items = [
 	}
 ];
 
-var connection = mysql.createConnection({
+/* var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'nishtha',
@@ -36,7 +36,7 @@ connection.connect((err) => {
 		console.log("HELLOO NISHTHAAA")
 	}
 });
-
+ */
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -88,7 +88,7 @@ app.get('/about-us.html', function (req, res) {
 app.get('/category.html', (req, res) => {
 	// items = [];
 	let sql = 'select * from Inventory';
-	connection.query(sql, (err, rows) => {
+/* 	connection.query(sql, (err, rows) => {
 		if (err) {
 			throw err
 		} else {
@@ -104,8 +104,8 @@ app.get('/category.html', (req, res) => {
 		}
 		res.render('category', { inventory: items });
 		console.log(items);
-	})
-
+	}) */
+	res.render('category', { inventory: items });
 	// console.log(post)
 });
 
