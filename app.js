@@ -9,6 +9,17 @@ var orders = [];
 var payment = [];
 var order_item = [];
 
+items = [
+	{
+		Item_ID: 3,
+		Type: 'Graphic T-Shirt',
+		Status: 'available',
+		Price: 600,
+		Item_Condition: '2',
+		IG_Link: 'https://lp2.hm.com/hmgoepprod?set=source[/55/49/5549ef5108f336451b6a9fad793895098d3ebcb1.jpg],origin[dam],category[ladies_tops_printed_tshirts],type[DESCRIPTIVESTILLLIFE],res[y],hmver[1]&call=url[file:/product/main]'
+	}
+];
+
 var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
@@ -75,7 +86,7 @@ app.get('/about-us.html', function (req, res) {
 });
 
 app.get('/category.html', (req, res) => {
-	items = [];
+	// items = [];
 	let sql = 'select * from Inventory';
 	connection.query(sql, (err, rows) => {
 		if (err) {
