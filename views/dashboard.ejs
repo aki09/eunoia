@@ -25,14 +25,12 @@
         <div class="container">
             <!-- Row Start -->
             <% for (var i=0; i<orders.length; i++) { %>
-            <div class="row">
-                
+            <div class="row">               
                 <div class="col-md-10 offset-md-60 col-lg-40 offset-lg-60">
                     <!-- Recently Favorited -->
                     <div class="widget dashboard-container my-adslist">
                         <!-- <h2 class="widget-header">ORDER - 1</h2> -->
-                            <table class="table table-responsive product-dashboard-table">
-                                
+                            <table class="table table-responsive product-dashboard-table">   
                                 <tr>
                                     <th rowspan="">Order <%= i + 1%>
                                     </th>
@@ -47,48 +45,50 @@
                                     </td>
                                     </th>
                                 </tr>
+                                </table>
+                            <table class="table table-responsive product-dashboard-table">   
                                 <td class="product-details">
                                     <span class=""><strong>Order ID:</strong>
                                         <%= orders[i]['Order_ID']%>
-                                    </span>
-                                    <span><strong>Date: </strong><time>
+                                    </span><br>
+                                    <span><strong>Order Date: </strong><time>
                                             <%= orders[i]['Order_Date']%>
-                                        </time></span>
-                                    <span class=""><strong>Amount:</strong>
+                                        </time></span><br>
+                                    <span class=""><strong>Order Amount:</strong>
                                         <%= orders[i]['Amount']%>
-                                    </span>
+                                    </span><br>
                                     <span class=""><strong>Name: </strong>
                                         <%= customers[i]['Name']%>
-                                    </span>
+                                    </span><br>
                                     <span class="location"><strong>Address: </strong>
                                         <%= orders[i]['Delivery_Address']%>
-                                    </span>
-                                    <span class="status active"><strong>Status: </strong>
+                                    </span><br>
+                                    <span class="status active"><strong>Order Status: </strong>
                                         <%= orders[i]['Order_Status']%>
-                                    </span>
-                                    <span class=""><strong>PayMode: </strong>
+                                    </span><br>
+                                    <span class=""><strong>Payment Mode: </strong>
                                         <%= payment[i]['Payment_Mode']%>
-                                    </span>
-                                    <span class=""><strong>PayDate: </strong><time>
+                                    </span><br>
+                                    <span class=""><strong>Payment Date: </strong><time>
                                             <%= payment[i]['Payment_Date']%>
                                         </time></span>
 
                                 </td>
-                                <tbody>
+                            </table>
+                                <table class="table table-responsive product-dashboard-table">
                                     <% for (var i=0; i<1; i++) { %>
                                         <tr>
-                                            
                                             <td class="product-details">
                                                 <h3 class="title">
                                                     <%= order_item[i]['Type']%>
                                                 </h3>
                                                 <span class="add-id"><strong>Item ID:</strong>
                                                     <%= order_item[i]['Item_ID']%>
-                                                </span>
+                                                </span><br>
                                                 
                                                 <span class="add-id"><strong>Item Price:</strong>
                                                     <%= order_item[i]['Price']%>
-                                                </span>
+                                                </span><br>
                                             </td>
                                             <td class="action" data-title="Action">
                                                 <div class="">
@@ -96,12 +96,12 @@
                                                         <button type="submit" class="button1"><i
                                                                 class="fa fa-trash"></i></button>
                                                     </ul>
-                                                </div>
+                                                </div>  
                                             </td>
                                         </tr>
                                         <%}%>
-                                </tbody>
-                            </table>
+                                </table>
+                            
                             
                     </div>
                 </div>
