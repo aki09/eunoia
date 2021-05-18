@@ -25,13 +25,12 @@
 
                     <div class="search-result bg-gray">
                         <h2>Available Items in Inventory</h2>
-                        <p>25 Items on 4 May, 2021</p>
+                        <p>2 Items on 4 May, 2021</p>
                     </div>
                 </div>
             </div>
             <form action='/category.html' method="POST">
-            <div class="row">
-                
+            <div class="row">                
                 <div class="col-md-3">
                     <div class="category-sidebar">
                         <div class="widget filter">
@@ -108,14 +107,16 @@
                                             <a href="#" onclick="event.preventDefault();" class="text-info"><i
                                                     class="fa fa-th-large"></i></a>
                                         </li>
-                                        <li class="list-inline-item">
+                                        <!-- <li class="list-inline-item">
                                             <a href="ad-list-view.html"><i class="fa fa-reorder"></i></a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="product-grid-list">
+                        <div class="row mt-30">
                     <ul>
                         <% for (var i=0; i<inventory.length; i++) { %>
                             <!-- <li>
@@ -152,19 +153,6 @@
                                                 <p class="card-text">
                                                     <%= inventory[i]['Item_condition']%>
                                                 </p>
-                                                <div class="product-ratings">
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -172,6 +160,8 @@
                             </li>
                             <%}%>
                     </ul>
+                    </div>
+                    </div>
                     <div class="pagination justify-content-center">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
