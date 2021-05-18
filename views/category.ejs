@@ -35,19 +35,17 @@
                     <div class="category-sidebar">
                         <div class="widget filter">
                             <h4 class="widget-header">Sort Produts</h4>
-                            <select>
-                                <option>By Popularity</option>
-                                <option value="1">Top rated</option>
-                                <option value="2">Lowest Price</option>
-                                <option value="4">Highest Price</option>
+                            <select name="sort" id="sort">
+                                <option value="Lowest Price">Lowest Price</option>
+                                <option value="Highest Price">Highest Price</option>
                             </select><br><br>
                         </div>
 
                         <div class="widget price-range w-100">
                             <h4 class="widget-header">By Price Range</h4>
                             <div class="block">
-                                <input class="range-track w-100" type="text" data-slider-min="0" data-slider-max="5000"
-                                    data-slider-step="5" data-slider-value="[0,5000]">
+                                <input class="range-track w-100" type="text" data-slider-min="100" data-slider-max="10000"
+                                    data-slider-step="5" data-slider-value="[100,10000]" id="range" name="range">
                                 <div class="d-flex justify-content-between mt-2">
                                     <span class="value">Rs100 - Rs10000</span><br><br><br>
                                 </div>
@@ -56,30 +54,11 @@
 
                         <div class="widget product-shorting">
                             <h4 class="widget-header">By Condition</h4>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    Brand New
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    Almost New
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    Gently New
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    Used (Old)
-                                </label>
-                            </div>
+                            <select name="condition" id="condition">
+                                <option value="Pre-Owned">Pre-Owned</option>
+                                <option value="New">New</option>
+                                <option value="Defected">Defected</option>
+                            </select>
                             <!-- <button type="submit" class="btn btn-primary d-block mt-2">Submit</button> -->
                         </div>
                         <button type="submit" class="btn btn-primary d-block mt-2">SUBMIT</button>   
@@ -91,13 +70,6 @@
                     <div class="category-search-filter">
                         <div class="row">
                             <div class="col-md-6">
-                                <strong>Sort </strong>
-                                <select>
-                                    <option>Most Recent</option>
-                                    <option value="1">Most Popular</option>
-                                    <option value="2">Lowest Price</option>
-                                    <option value="4">Highest Price</option>
-                                </select>
                             </div>
                             <div class="col-md-6">
                                 <div class="view">

@@ -82,22 +82,22 @@ orders = [
 	}
 ];
 
-// var connection = mysql.createConnection({
-// 	host: 'localhost',
-// 	user: 'root',
-// 	password: 'nishtha',
-// 	database: 'dbdb',
-// 	port: 3306
-// });
+var connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: 'nishtha',
+	database: 'dbdb',
+	port: 3306
+});
 
-// connection.connect((err) => {
-// 	if (err) {
-// 		console.log("ERRE")
-// 	}
-// 	else {
-// 		console.log("HELLOO NISHTHAAA")
-// 	}
-// });
+connection.connect((err) => {
+	if (err) {
+		console.log("ERRE")
+	}
+	else {
+		console.log("HELLOO NISHTHAAA")
+	}
+});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -148,96 +148,96 @@ app.get('/about-us.html', function (req, res) {
 });
 
 app.get('/category.html', (req, res) => {
-	// items = [];
+	items = [];
 	let sql = 'select * from Inventory';
-	// connection.query(sql, (err, rows) => {
-	// 	if (err) {
-	// 		throw err
-	// 	} else {
-	// 	}
-	// 	for (let i = 0; i < rows.length; i++) {
-	// 		items.push(rows[i]);
-	// 	}
-	// 	res.render('category', { inventory: items });
-	// })
-	res.render('category', { inventory: items });
-	console.log(post)
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+		}
+		for (let i = 0; i < rows.length; i++) {
+			items.push(rows[i]);
+		}
+		res.render('category', { inventory: items });
+	})
+	// res.render('category', { inventory: items });
+	// console.log(post)
 });
 
 app.get('/customer.html', function (req, res) {
 	let sql = 'select * from customers';
-	// customers = [];
-	// connection.query(sql, (err, rows) => {
-	// 	if (err) {
-	// 		throw err
-	// 	} else {
-	// 	}
-	// 	for (let i = 0; i < rows.length; i++) {
-	// 		customers.push(rows[i]);
-	// 	}
-	// 	console.log(customers);
-	// 	res.render('customers', { customers: customers });
-	// })
-	res.render('customers', { customers: customers });
+	customers = [];
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+		}
+		for (let i = 0; i < rows.length; i++) {
+			customers.push(rows[i]);
+		}
+		console.log(customers);
+		res.render('customers', { customers: customers });
+	})
+	// res.render('customers', { customers: customers });
 });
 
 app.get('/dashboard.html', function (req, res) {
 	let sql = 'select Order_ID, DATE_FORMAT(Order_Date, \'%d/%m/%y\') "Order_Date", Amount, Delivery_Address, Order_Status from orders order by Order_ID';
-	// orders = [];
-	// connection.query(sql, (err, rows) => {
-	// 	if (err) {
-	// 		throw err
-	// 	} else {
-	// 	}
-	// 	var query = "SELECT Name FROM Customers where Customer_ID in( SELECT Customer_ID FROM Customer_Order order by Order_ID)"
-	// 	connection.query(query, (err, data) => {
-	// 		if (err) {
-	// 			throw err
-	// 		} else {
-	// 		}
-	// 		for (let i = 0; i < data.length; i++) {
-	// 			customers.push(data[i]);
-	// 		}
-	// 		// console.log("customers here")
-	// 		// console.log(customers)
-	// 		for (let i = 0; i < rows.length; i++) {
-	// 			orders.push(rows[i]);
-	// 		}
-	// 		// console.log("ORDERSSSSS")
-	// 		// console.log(orders)
-	// 		var query = "SELECT Payment_Mode, DATE_FORMAT(Payment_Date, '%d/%m/%y') \"Payment_Date\" FROM Payment order by Order_ID "
-	// 		connection.query(query, (err, data) => {
-	// 			if (err) {
-	// 				throw err
-	// 			} else {
-	// 			}
-	// 			for (let index = 0; index < data.length; index++) {
-	// 				payment.push(data[index])
-	// 			}
-	// 			console.log(data)
-	// 			console.log(payment)
+	orders = [];
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+		}
+		var query = "SELECT Name FROM Customers where Customer_ID in( SELECT Customer_ID FROM Customer_Order order by Order_ID)"
+		connection.query(query, (err, data) => {
+			if (err) {
+				throw err
+			} else {
+			}
+			for (let i = 0; i < data.length; i++) {
+				customers.push(data[i]);
+			}
+			// console.log("customers here")
+			// console.log(customers)
+			for (let i = 0; i < rows.length; i++) {
+				orders.push(rows[i]);
+			}
+			// console.log("ORDERSSSSS")
+			// console.log(orders)
+			var query = "SELECT Payment_Mode, DATE_FORMAT(Payment_Date, '%d/%m/%y') \"Payment_Date\" FROM Payment order by Order_ID "
+			connection.query(query, (err, data) => {
+				if (err) {
+					throw err
+				} else {
+				}
+				for (let index = 0; index < data.length; index++) {
+					payment.push(data[index])
+				}
+				console.log(data)
+				console.log(payment)
 
-	// 			var query = "SELECT Item_ID,Type,Price FROM Inventory WHERE Item_ID IN ( SELECT Item_ID FROM Order_List GROUP BY Order_ID)";
-	// 			connection.query(query, (err, data) => {
-	// 				if (err) {
-	// 					throw err
-	// 				} else {
-	// 				}
-	// 				for (let index = 0; index < data.length; index++) {
-	// 					order_item.push(data[index])
-	// 				}
-	// 				console.log(order_item)
-	// 				res.render('dashboard', { orders: orders, customers: customers, payment: payment, order_item: order_item });
-	// 			})
+				var query = "SELECT Item_ID,Type,Price FROM Inventory WHERE Item_ID IN ( SELECT Item_ID FROM Order_List GROUP BY Order_ID)";
+				connection.query(query, (err, data) => {
+					if (err) {
+						throw err
+					} else {
+					}
+					for (let index = 0; index < data.length; index++) {
+						order_item.push(data[index])
+					}
+					console.log(order_item)
+					res.render('dashboard', { orders: orders, customers: customers, payment: payment, order_item: order_item });
+				})
 
-	// 		})
+			})
 
-	// 		console.log(rows)
+			console.log(rows)
 
-	// 	})
+		})
 
-	// })
-	res.render('dashboard', { orders: orders, customers: customers, payment: payment, order_item: order_item });
+	})
+	// res.render('dashboard', { orders: orders, customers: customers, payment: payment, order_item: order_item });
 });
 
 app.post('/ad-listing.html', (req, res) => {
@@ -332,6 +332,33 @@ app.post('/ad-orders.html', (req, res) => {
 	});
 	res.redirect('/ad-orders.html');
 })
+
+app.post('/category.html', (req, res) => {
+	items = [];
+	var range = req.body.range;
+	var condition = req.body.condition;
+	var sort = req.body.sort;
+	var values = range.split(',');
+	if (sort === 'Lowest Price') {
+		var sql = "select * from inventory where (Price between " + values[0] + " and " + values[1] + ") and Item_Condition = " + "'" + condition + "'" + " order by Price";	
+	} else {
+		var sql = "select * from inventory where (Price between " + values[0] + " and " + values[1] + ") and Item_Condition = " + "'" + condition + "'" + " order by Price desc";
+	}
+	
+	console.log(sql);
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+			for (let index = 0; index < rows.length; index++) {
+				items.push(rows[index]);
+			}
+		}
+		res.render('category', { inventory: items });
+	})
+
+})
+
 
 app.listen(5000, function () {
 	console.log("Started");
