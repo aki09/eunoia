@@ -22,7 +22,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="search-result bg-gray">
                         <h2>Inventory</h2>
                         <p><%= inventory.length %> Items on 1 June, 2021</p>
@@ -36,8 +35,8 @@
                             <div class="widget filter">
                                 <h4 class="widget-header">Sort Produts</h4>
                                 <select name="sort" id="sort">
-                                    <option value="Lowest Price">Lowest Price</option>
-                                    <option value="Highest Price">Highest Price</option>
+                                    <option value="Lowest Price">Lowest to Highest</option>
+                                    <option value="Highest Price">Highest to Lowest</option>
                                 </select><br><br>
                             </div>
 
@@ -56,15 +55,15 @@
                             <div class="widget product-shorting">
                                 <h4 class="widget-header">By Condition</h4>
                                 <select name="condition" id="condition">
-                                    <option value="Pre-Owned">Pre-Owned</option>
+                                    <option value="Pre-Owned">Pre-Owned&nbsp;</option>
                                     <option value="New">New</option>
                                     <option value="Defected">Defected</option>
                                 </select>
                                 <!-- <button type="submit" class="btn btn-primary d-block mt-2">Submit</button> -->
                             </div>
-                            <button type="submit" class="btn btn-primary d-block mt-2">SUBMIT</button>
-                        </div>
-
+                            <button type="submit" class="btn btn-primary d-block mt-2">Reset Changes</button>
+                            <button type="submit" class="btn btn-primary d-block mt-2">Apply Changes</button>   
+                          </div>
                     </div>
             </form>
             <div class="col-md-9">
@@ -98,19 +97,19 @@
                                 <div class="product-item bg-light">
                                     <div class="card">
                                         <div class="thumb-content">
-                                            <a href="single.html">
+                                            <a href="Edit-orders.html">
                                                 <img class="card-img-top img-fluid"
                                                     src="<%= inventory[i]['IG_Link']%>" alt="Card image cap">
                                             </a>
                                         </div>
                                         <div class="card-body">
-                                            <h4 class="card-title"><a href="single.html">
+                                            <h4 class="card-title"><a href="Edit-orders.html">
                                                     <%= inventory[i]['Type']%>
                                                 </a>
                                             </h4>
                                             <ul class="list-inline product-meta">
                                                 <li class="list-inline-item">
-                                                    <a href="single.html"><i class="fa fa-tags"></i>
+                                                    <a href="Edit-orders.html"><i class="fa fa-tags"></i>
                                                         <%= inventory[i]['Status']%>
                                                     </a>
                                                 </li>

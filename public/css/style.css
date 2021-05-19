@@ -441,7 +441,7 @@ button {
 }
 
 .btn-main:hover, .btn-main-sm:hover {
-  background: #082de1;
+  background: #5672f9;
   color: #fff;
 }
 
@@ -469,7 +469,7 @@ button {
 }
 
 .btn-transparent:hover {
-  background: #082de1;
+  background: #5672f9;
   color: #fff;
 }
 
@@ -656,11 +656,15 @@ ul.pagination .active a {
   background: #5672f9;
 }
 .bg-5{
-  background: url(../images/call-to-action/cta-background.jpg);
+  background: url(../images/call-to-action/shopping-cart-banner.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.bg-6{
+  background: url(../images/call-to-action/thumbsup.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .navigation {
   padding: 20px 0;
 }

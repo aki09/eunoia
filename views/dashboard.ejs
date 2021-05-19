@@ -20,12 +20,12 @@
     <!--==================================
 =            User Profile            =
 ===================================-->
-    <section class="call-to-action overly bg-5 section-sm">
+    <section class="hero-area bg-5 text-center overly">
         <!-- Container Start -->
         <div class="container">
-            <div class="row justify-content-md-center text-center">
-                <div class="col-md-7">
-                    <div class="content-holder">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content-block"><br><br>
                         <!-- <h2>Join us get more exposure and
                         grow your business</h2> --><br><br><br>
                         <!-- <ul class="list-inline mt-30">
@@ -49,18 +49,20 @@
                 <div class="col-md-10 offset-md-60 col-lg-40 offset-lg-60">
                     <!-- Recently Favorited -->
                     <div class="widget dashboard-container my-adslist">
-                    <h2>CURRENT ORDERS </h2>
+                        <div class="search-result bg-gray">
+                        <h2>CURRENT ORDERS </h2>
+                        </div>
                     <% for (var i=0; i<orders.length; i++) { %>
                         <!-- <h2 class="widget-header">ORDER - 1</h2> -->
                         <table class="table table-responsive product-dashboard-table">
-                            <tr>
-                                
+                            <tr> 
                                 <th rowspan="">Order <%= i + 1%></th>
                                 <th>
                                     <td class="action" data-title="Action">
-                                        <div class="">
+                                        <div class="col-md-10 offset-md-60 col-lg-4 offset-lg-60">
                                             <ul class="list-inline justify-content-center">
-                                                <button type="submit" class="button1"><i class="fa fa-pencil"></i></button>
+                                                <button type="submit" class="button1" onclick="window.location.href='edit-orders.html';"><i class="fa fa-pencil"></i>
+                                                </button>
                                             </ul>
                                         </div>
                                     </td>
