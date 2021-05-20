@@ -24,7 +24,7 @@ app.get('/user-profile.html',adminController.getUserProfile);
 
 app.get('/ad-listing.html', adminController.getAddProduct);
 
-app.get('/ad-orders.html', adminController.getAddProduct);
+app.get('/ad-orders.html', adminController.getAddOrder);
 
 app.get('/ad-customer.html', adminController.getAddCustomer);
 

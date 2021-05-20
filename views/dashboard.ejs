@@ -73,48 +73,51 @@
                                         <%= orders[i]['Amount']%>
                                     </span><br>
                                     <span class=""><strong>Name: </strong>
-                                        <%= customers[i]['Name']%>
+                                        <%= orders[i]['Name']%>
                                     </span><br>
-                                    <span class="location"><strong>Address: </strong>
+                                    <span class="location"><strong>Delivery Address: </strong>
                                         <%= orders[i]['Delivery_Address']%>
                                     </span><br>
                                     <span class="status active"><strong>Order Status: </strong>
                                         <%= orders[i]['Order_Status']%>
                                     </span><br>
                                     <span class=""><strong>Payment Mode: </strong>
-                                        <%= payment[i]['Payment_Mode']%>
+                                        <%= orders[i]['Payment_Mode']%>
                                     </span><br>
                                     <span class=""><strong>Payment Date: </strong><time>
-                                            <%= payment[i]['Payment_Date']%>
+                                            <%= orders[i]['Payment_Date']%>
                                         </time></span>
                                 </td>
                             </table>
-                        
-                        <table class="table table-responsive product-dashboard-table">
-                            <tr>
-                                <td class="product-details">
-                                    <h3 class="title">
-                                        <%= order_item[i]['Type']%>
-                                    </h3>
-                                    <span class="add-id"><strong>Item ID:</strong>
-                                        <%= order_item[i]['Item_ID']%>
-                                    </span><br>
+                        <% for (var j=0; j<items.length; j++) { %>
+                            <% if( orders[i]['Order_ID'] === items[j]['Order_ID'] ) { %>
+                                <table class="table table-responsive product-dashboard-table">
+                                    <tr>
+                                        <td class="product-details">
+                                            <h3 class="title">
+                                                <%= items[j]['Type']%>
+                                            </h3>
+                                            <span class="add-id"><strong>Item ID:</strong>
+                                                <%= items[j]['Item_ID']%>
+                                            </span><br>
 
-                                    <span class="add-id"><strong>Item Price:</strong>
-                                        <%= order_item[i]['Price']%>
-                                    </span><br>
-                                </td>
-                                <td class="action" data-title="Action">
-                                    <div class="">
-                                        <ul class="list-inline justify-content-center">
-                                            <button type="submit" class="button1"><i
-                                                    class="fa fa-trash"></i></button>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                                            <span class="add-id"><strong>Item Price:</strong>
+                                                <%= items[j]['Price']%>
+                                            </span><br>
+                                        </td>
+                                        <td class="action" data-title="Action">
+                                            <div class="">
+                                                <ul class="list-inline justify-content-center">
+                                                    <button type="submit" class="button1"><i
+                                                            class="fa fa-trash"></i></button>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            <%}%>
                         <%}%>
+                    <%}%>
                     </div>
                 </div>
             </div>

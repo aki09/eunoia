@@ -158,60 +158,22 @@ exports.getCustomer = (req, res) => {
 }
 
 exports.getOrders = (req, res) => {
-    let sql = 'select Order_ID, DATE_FORMAT(Order_Date, \'%d/%m/%y\') "Order_Date", Amount, Delivery_Address, Order_Status from orders order by Order_ID';
+    var sql = 'SELECT o.Order_ID, DATE_FORMAT(o.Order_Date, \'%d/%m/%y\') "Order_Date",o.Amount,o.Delivery_Address,o.Order_Status,c.Name,p.Payment_Mode,DATE_FORMAT(p.Payment_Date, \'%d/%m/%y\') "Payment_Date" FROM Orders o, Customer_Order co, Customers c, Payment p WHERE o.Order_ID=co.Order_ID AND co.Customer_ID=c.Customer_ID AND(o.Order_ID=p.Order_ID)';
     orders = [];
     connection.query(sql, (err, rows) => {
         if (err) {
             throw err
         } else {
         }
-        var query = "SELECT Name FROM Customers where Customer_ID in( SELECT Customer_ID FROM Customer_Order order by Order_ID)"
-        connection.query(query, (err, data) => {
+        sql= "SELECT o.Order_ID,i.Item_ID,i.Type,i.Price FROM Inventory i, Order_List ol, Orders o WHERE ol.Item_ID=i.Item_ID AND o.Order_ID=ol.Order_ID";
+        connection.query(sql, (err, data) => {
             if (err) {
-                throw err
             } else {
             }
-            for (let i = 0; i < data.length; i++) {
-                customers.push(data[i]);
-            }
-            // console.log("customers here")
-            // console.log(customers)
-            for (let i = 0; i < rows.length; i++) {
-                orders.push(rows[i]);
-            }
-            // console.log("ORDERSSSSS")
-            // console.log(orders)
-            var query = "SELECT Payment_Mode, DATE_FORMAT(Payment_Date, '%d/%m/%y') \"Payment_Date\" FROM Payment order by Order_ID "
-            connection.query(query, (err, data) => {
-                if (err) {
-                    throw err
-                } else {
-                }
-                for (let index = 0; index < data.length; index++) {
-                    payment.push(data[index])
-                }
-                console.log(data)
-                console.log(payment)
-
-                var query = "SELECT Item_ID,Type,Price FROM Inventory WHERE Item_ID IN ( SELECT Item_ID FROM Order_List GROUP BY Order_ID)";
-                connection.query(query, (err, data) => {
-                    if (err) {
-                        throw err
-                    } else {
-                    }
-                    for (let index = 0; index < data.length; index++) {
-                        order_item.push(data[index])
-                    }
-                    console.log(order_item)
-                    res.render('dashboard', { orders: orders, customers: customers, payment: payment, order_item: order_item });
-                })
-
-            })
-
-            console.log(rows)
-
+            console.log("Data")
+            console.log(data)
+            res.render('dashboard', { orders: rows, items: data });
         })
-
     })
     //  res.render('dashboard', { orders: orders, customers: customers, payment: payment, order_item: order_item });
 }

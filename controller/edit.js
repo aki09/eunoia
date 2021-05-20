@@ -73,7 +73,7 @@ exports.addOrder = (req, res) => {
         if (err) {
             throw err;
         } else {
-            console.log(rows);
+            
         }
     });
 
@@ -83,7 +83,7 @@ exports.addOrder = (req, res) => {
         if (err) {
             throw err;
         } else {
-            console.log(rows);
+            
         }
     });
 
@@ -93,7 +93,7 @@ exports.addOrder = (req, res) => {
         if (err) {
             throw err;
         } else {
-            console.log(rows);
+            
         }
     });
 
@@ -103,7 +103,7 @@ exports.addOrder = (req, res) => {
         if (err) {
             throw err;
         } else {
-            console.log(rows);
+           
         }
     });
     res.redirect('/ad-orders.html');
@@ -164,7 +164,7 @@ exports.getEditCustomer = (req, res) => {
 			throw err
 		} else {
 		}
-		console.log(rows)
+		
 		res.render('edit-customer', {customer: rows});
 	})
 }
