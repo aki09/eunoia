@@ -1,4 +1,4 @@
-<%- include("header") -%>
+<%- include("includes/header") -%>
     <ul class="navbar-nav ml-auto mt-10">
         <!-- <li class="nav-item">
             <a class="nav-link login-button" href="login.html">Login</a>
@@ -45,17 +45,20 @@
                         </div>
                         <div class="col-lg-6">
                             <h6 class="font-weight-bold pt-4 pb-1">Instagram Handle:</h6>
-                            <input type="text" class="border w-100 p-2 bg-white text-capitalize" id="ig" name="ig"
+                            <input type="text" class="border w-100 p-2 bg-white" id="ig" name="ig"
                                 placeholder="" value="<%= customer[0]['Instagram_Handle'] %>">
-                            <div class="price">
+                            <!-- <div class="price">
                                 <h6 class="font-weight-bold pt-4 pb-1">Email ID:</h6>
                                 <div class="row px-3">
                                     <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
-                                        <input type="email" name="email" class="border-0 py-2 w-100 price"
+                                        <input type="email" name="email" class="border w-100 p-2 bg-white text-capitalize"
                                             placeholder="" id="email" value="<%= customer[0]['Email_ID'] %>">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+                            <h6 class="font-weight-bold pt-4 pb-1">Email ID:</h6>
+                            <input type="email" name="email" class="border w-100 p-2 bg-white"
+                            placeholder="" id="email" value="<%= customer[0]['Email_ID'] %>">
                         </div>
                     </div>
                 </fieldset>
@@ -75,4 +78,4 @@
 =            Footer            =
 =============================-->
 
-    <%- include("footer") -%>
+    <%- include("includes/footer") -%>

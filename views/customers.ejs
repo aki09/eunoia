@@ -1,4 +1,4 @@
-<%- include("header") -%>
+<%- include("includes/header") -%>
     <ul class="navbar-nav ml-auto mt-10">
         <!-- <li class="nav-item">
             <a class="nav-link login-button" href="login.html">Login</a>
@@ -90,8 +90,7 @@
                                                 <ul class="list-inline justify-content-center">
                                                     <button type="submit"
                                                         class="button1"><i class="fa fa-eye"></i></button>
-                                                       <a href="edit-customer.html/<%= customers[i]['Customer_ID']%>"> <button type="submit" class="button1"><i class="fa fa-pencil"></i>
-                                                        </button></a>
+                                                       <a href="edit-customer.html/<%= customers[i]['Customer_ID']%>" class="button1"><i class="fa fa-pencil"></i></a>
                                                 </ul>
                                             </div>
                                         </td>
@@ -116,4 +115,4 @@
 =            Footer            =
 =============================-->
 
-    <%- include("footer") -%>
+    <%- include("includes/footer") -%>
