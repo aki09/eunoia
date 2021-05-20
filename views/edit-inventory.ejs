@@ -1,0 +1,75 @@
+<%- include("includes/header") -%>
+    <ul class="navbar-nav ml-auto mt-10">
+    </ul>
+    </div>
+    </nav>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <section class="ad-post bg-gray py-5">
+        <div class="container">
+            <form action='/edit-inventory.html' method="POST">
+                <!-- Post Your ad start -->
+                <fieldset class="border border-gary p-4 mb-5">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3>Edit Item</h3>
+                        </div>
+                        <div class="col-lg-6">
+                            <h6 class="font-weight-bold pt-4 pb-1">Item Type:</h6>
+                            <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="type"
+                                placeholder="Item" value="<%= item[0]['Type'] %>" readonly>
+                            <h6 class="font-weight-bold pt-4 pb-1">Item Status:</h6>
+                            <div class="row px-3">
+                                <div class="col-lg-4 mr-lg-4 my-2 rounded bg-white">
+                                    <input type="radio" name="status" value="available" id="available">
+                                    <label for="available" class="py-2">Available</label>
+                                </div>
+                                <div class="col-lg-4 mr-lg-4 my-2 rounded bg-white ">
+                                    <input type="radio" name="status" value="sold" id="sold">
+                                    <label for="sold" class="py-2">Sold Out</label>
+                                </div>
+                            </div>
+                            <h6 class="font-weight-bold pt-4 pb-1">Instagram Post Link:</h6>
+                            <textarea name="ig" id="" class="border p-3 w-100" rows="7"> <%= item[0]['IG_Link'] %> </textarea>
+                        </div>
+                        <div class="col-lg-6">
+                            <h6 class="font-weight-bold pt-4 pb-1">Select Item Condition:</h6>
+                            <select name="condition" id="inputGroupSelect" class="w-100">
+                                <option value="Pre-Owned">Pre-Owned</option>
+                                <option value="New">New</option>
+                                <option value="Defected">Defected</option>
+                            </select>
+                            <div class="price">
+                                <h6 class="font-weight-bold pt-4 pb-1">Item Price:</h6>
+                                <div class="row px-3">
+                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
+                                        <input type="text" name="price" value="<%= item[0]['Price'] %>" class="border-0 py-2 w-100 price"
+                                            placeholder="Price" id="price">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- Post Your ad end -->
+
+                <!-- seller-information start -->
+                <!-- seller-information end-->
+
+                <!-- ad-feature start -->
+                <!-- ad-feature start -->
+
+                <!-- submit button -->
+                <input type="hidden" name="id" id="id" value="<%= item[0]['Item_ID'] %>">
+                <button type="submit" class="btn btn-primary d-block mt-2">Change</button>
+            </form>
+        </div>
+    </section>
+    <!--============================
+=            Footer            =
+=============================-->
+
+    <%- include("includes/footer") -%>

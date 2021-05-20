@@ -168,3 +168,35 @@ exports.getEditCustomer = (req, res) => {
 		res.render('edit-customer', {customer: rows});
 	})
 }
+
+exports.getEditInventory = (req, res) => {
+    const id = req.params.id;
+    let sql = 'select * from inventory where Item_ID = ' + id;
+    const item = [];
+	connection.query(sql, (err, rows) => {
+		if (err) {
+			throw err
+		} else {
+		}
+		console.log(rows)
+		res.render('edit-inventory', {item: rows});
+	})
+}
+
+exports.editInventory = (req, res) => {
+    var id = req.body.id;
+    var type = req.body.type;
+    var status = req.body.status;
+    var ig = req.body.ig;
+    var condition = req.body.condition;
+    var price = req.body.price;
+    let sql = "UPDATE Inventory SET ? WHERE Item_ID = " + id;
+    let post = { Type: type, Status: status, Price: price, Item_Condition: condition, IG_Link: ig }
+    connection.query(sql, post, (err, rows) => {
+        if (err) {
+            throw err
+        } else {
+        }
+        res.redirect('/category.html')
+    })
+}

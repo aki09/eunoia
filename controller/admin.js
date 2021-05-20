@@ -1,9 +1,3 @@
-exports.getIndex = (req, res, next) => {
-	var newItem = 'AYUSH';
-
-	res.render('index', { new_item: newItem });
-}
-
 exports.getLogin = (req, res, next) => {
 	res.render('login');
 }

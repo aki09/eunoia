@@ -1,15 +1,4 @@
 <%- include("includes/header") -%>
-    <!-- <ul class="navbar-nav ml-auto mt-10">
-        <li class="nav-item">
-            <a class="nav-link login-button" href="login.html">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link login-button" href="user-profile.html">Edit Profile</a>
-        </li> -->
-        <!-- <li class="nav-item">
-            <a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add
-                Items</a>
-        </li> -->
     </ul>
     </div>
     </nav>
@@ -32,56 +21,6 @@
                         <h1>Manage Your Business </h1>
                         <p>Join us and experience the <b>hassle-free</b> process of managing your Market Inventory
                         </p>
-                        <!-- <div class="short-popular-category-list text-center">
-						<h2>Popular Category</h2>
-						<ul class="list-inline">
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-bed"></i> Hotel</a></li>
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-grav"></i> Fitness</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-car"></i> Cars</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-cutlery"></i> Restaurants</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-coffee"></i> Cafe</a>
-							</li>
-						</ul>
-					</div> -->
-
-                    </div>
-                    <!-- Advance Search -->
-                    <!-- <div class="advance-search">
-						<div class="container">
-							<div class="row justify-content-center">
-								<div class="col-lg-12 col-md-12 align-content-center">
-										<form>
-											<div class="form-row">
-												<div class="form-group col-md-4">
-													<input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="What are you looking for">
-												</div>
-												<div class="form-group col-md-3">
-													<select class="w-100 form-control mt-lg-1 mt-md-2">
-														<option>Category</option>
-														<option value="1">Top rated</option>
-														<option value="2">Lowest Price</option>
-														<option value="4">Highest Price</option>
-													</select>
-												</div>
-												<div class="form-group col-md-3">
-													<input type="text" class="form-control my-2 my-lg-1" id="inputLocation4" placeholder="Location">
-												</div>
-												<div class="form-group col-md-2 align-self-center">
-													<button type="submit" class="btn btn-primary">Search Now</button>
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-					</div> -->
                 </div>
 
             </div>
@@ -113,6 +52,7 @@
                 <!-- offer 01 -->
                 <div class="col-lg-12">
                     <div class="trending-ads-slide">
+                        <% for(var i=0; i<items.length; i++) { %>
                         <div class="col-sm-12 col-lg-4">
                             <!-- product card -->
                             <div class="product-item bg-light">
@@ -120,163 +60,28 @@
                                     <div class="thumb-content">
                                         <!-- <div class="price">$200</div> -->
                                         <a href="">
-                                            <img class="card-img-top img-fluid" src="images/products/products-1.jpg"
+                                            <img class="card-img-top img-fluid" src="<%= items[i]['IG_Link'] %>"
                                                 alt="Card image cap">
                                         </a>
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title"><a href="">
-                                                <%= new_item %>
+                                                <%= items[i]['Type'] %>
                                             </a></h4>
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
                                                 <a href=""><i
-                                                        class="fa fa-folder-open-o"></i>Electronics</a>
+                                                        class="fa fa-tags"></i><%= items[i]['Item_Condition'] %></a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a href="#"><i class="fa fa-calendar"></i>26th December</a>
+                                                <a href="#"><i class="fa fa-rupee"></i><%= items[i]['Price'] %></a>
                                             </li>
                                         </ul>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                            Explicabo, aliquam!
-                                        </p>
-                                        <!-- <div class="product-ratings">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
-                            <div class="product-item bg-light">
-                                <div class="card">
-                                    <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> -->
-                                        <a href="">
-                                            <img class="card-img-top img-fluid" src="images/products/products-2.jpg"
-                                                alt="Card image cap">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <a href=""><i class="fa fa-folder-open-o"></i>Furnitures</a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                                            </li>
-                                        </ul>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                            Explicabo, aliquam!
-                                        </p>
-                                        <!-- <div class="product-ratings">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
-                            <div class="product-item bg-light">
-                                <div class="card">
-                                    <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> -->
-                                        <a href="">
-                                            <img class="card-img-top img-fluid" src="images/products/products-3.jpg"
-                                                alt="Card image cap">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <a href=""><i
-                                                        class="fa fa-folder-open-o"></i>Electronics</a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                                            </li>
-                                        </ul>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                            Explicabo, aliquam!
-                                        </p>
-                                        <!-- <div class="product-ratings">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
-                            <div class="product-item bg-light">
-                                <div class="card">
-                                    <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> -->
-                                        <a href="">
-                                            <img class="card-img-top img-fluid" src="images/products/products-2.jpg"
-                                                alt="Card image cap">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <a href=""><i class="fa fa-folder-open-o"></i>Furnitures</a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                                            </li>
-                                        </ul>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                            Explicabo, aliquam!
-                                        </p>
-                                        <!-- <div class="product-ratings">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                        </div>
+                        <%}%>
                     </div>
                 </div>
 
@@ -308,8 +113,6 @@
                             grow your business</h2> --><br><br><br>
                         <ul class="list-inline mt-30">
                             <li class="list-inline-item"><a class="btn btn-secondary" href="about-us.html">About Us</a></li>
-                            <!-- <li class="list-inline-item"><a class="btn btn-secondary" href="contact-us.html">Contact
-                                    Us</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -323,30 +126,30 @@
                 <div class="col-lg-3 col-sm-6 my-lg-0 my-3">
                     <div class="counter-content text-center bg-light py-4 rounded">
                         <i class="fa fa-smile-o d-block"></i>
-                        <span class="counter my-2 d-block" data-count="10">0</span>
-                        <h5>Happy Sellers</h5>
+                        <span class="counter my-2 d-block" data-count="<%= customer_count %>">0</span>
+                        <h5>Happy Customers</h5>
                         </script>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 my-lg-0 my-3">
                     <div class="counter-content text-center bg-light py-4 rounded">
                         <i class="fa fa-user-o d-block"></i>
-                        <span class="counter my-2 d-block" data-count="5">0</span>
+                        <span class="counter my-2 d-block" data-count="1">0</span>
                         <h5>Active Sellers</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 my-lg-0 my-3">
                     <div class="counter-content text-center bg-light py-4 rounded">
                         <i class="fa fa-bookmark-o d-block"></i>
-                        <span class="counter my-2 d-block" data-count="100">0</span>
+                        <span class="counter my-2 d-block" data-count="<%= item_count %>">0</span>
                         <h5>Items Managed</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 my-lg-0 my-3">
                     <div class="counter-content text-center bg-light py-4 rounded">
                         <i class="fa fa-handshake-o d-block"></i>
-                        <span class="counter my-2 d-block" data-count="200">0</span>
-                        <h5>Business Reach</h5>
+                        <span class="counter my-2 d-block" data-count="<%= order_count %>">0</span>
+                        <h5>Orders Placed</h5>
                     </div>
                 </div>
             </div>

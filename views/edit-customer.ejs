@@ -47,28 +47,12 @@
                             <h6 class="font-weight-bold pt-4 pb-1">Instagram Handle:</h6>
                             <input type="text" class="border w-100 p-2 bg-white" id="ig" name="ig"
                                 placeholder="" value="<%= customer[0]['Instagram_Handle'] %>">
-                            <!-- <div class="price">
-                                <h6 class="font-weight-bold pt-4 pb-1">Email ID:</h6>
-                                <div class="row px-3">
-                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
-                                        <input type="email" name="email" class="border w-100 p-2 bg-white text-capitalize"
-                                            placeholder="" id="email" value="<%= customer[0]['Email_ID'] %>">
-                                    </div>
-                                </div>
-                            </div> -->
                             <h6 class="font-weight-bold pt-4 pb-1">Email ID:</h6>
                             <input type="email" name="email" class="border w-100 p-2 bg-white"
                             placeholder="" id="email" value="<%= customer[0]['Email_ID'] %>">
                         </div>
                     </div>
                 </fieldset>
-                <!-- <div class="checkbox d-inline-flex">
-                    <input type="checkbox" id="terms-&-condition" class="mt-1">
-                    <label for="terms-&-condition" class="ml-2">By click you must agree with our
-                        <span> <a class="text-success" href="terms-condition.html">Terms & Condition and Posting
-                                Rules.</a></span>
-                    </label>
-                </div> -->
                 <input type="hidden" value="<%= customer[0]['Customer_ID'] %>" name="id" id="id">
                 <button type="submit" class="btn btn-primary d-block mt-2">CONFIRM CHANGES</button>
             </form>

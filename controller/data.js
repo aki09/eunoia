@@ -3,6 +3,7 @@ var customers = [];
 var orders = [];
 var payment = [];
 var order_item = [];
+var recent_item = [];
 
 order_item = [
 	{ Item_ID: 1, Type: 'Slip Dress', Price: 1300 },
@@ -94,6 +95,33 @@ connection.connect((err) => {
         console.log("HELLOO NISHTHAAA")
     }
 });
+
+exports.getIndex = (req, res, next) => {
+    var cust = 1;
+    var cate = 1;
+    var ord = 1;
+    var sql = 'SELECT ( SELECT COUNT(*) FROM Customers ) AS count1, ( SELECT COUNT(*) FROM Inventory ) AS count2, ( SELECT COUNT(*) FROM Orders ) AS count3 FROM dual';
+    connection.query(sql, (err, data) => {
+        if (err) {
+        } else {
+        }
+        cust = data[0]['count1'];
+        cate = data[0]['count2'];
+        ord = data[0]['count3'];
+    })
+    recent_item = [];
+    sql = 'SELECT * FROM Inventory ORDER BY Item_ID DESC LIMIT 5';
+    connection.query(sql, (err, rows) => {
+        if (err) {
+            throw err;
+        } else {
+        }
+        for (let index = 0; index < rows.length; index++) {
+            recent_item.push(rows[index]);      
+        }
+        res.render('index', { items: recent_item, customer_count: cust, item_count: cate, order_count: ord });
+    })
+}
 
 exports.getInvetory = (req, res) => {
     items = [];

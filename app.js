@@ -12,9 +12,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.get('/', adminController.getIndex);
+app.get('/', dataController.getIndex);
 
-app.get('/index.html', adminController.getIndex);
+app.get('/index.html', dataController.getIndex);
 
 app.get('/login.html', adminController.getLogin);
 
@@ -47,6 +47,10 @@ app.post('/category.html', editController.filterInventory);
 app.get('/edit-customer.html/:id', editController.getEditCustomer);
 
 app.post('/edit-customer.html', editController.editCustomer);
+
+app.get('/edit-inventory.html/:id', editController.getEditInventory);
+
+app.post('/edit-inventory.html', editController.editInventory);
 
 app.listen(5000, function () {
 	console.log("Started");
