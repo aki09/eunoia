@@ -85,14 +85,13 @@
                                                 <%= customers[i]['Email_ID']%>
                                             </span>
                                         </td>
-
                                         <td class="action" data-title="Action">
                                             <div class="">
                                                 <ul class="list-inline justify-content-center">
                                                     <button type="submit"
                                                         class="button1"><i class="fa fa-eye"></i></button>
-                                                    <button type="submit"
-                                                        class="button1"><i class="fa fa-pencil"></i></button>
+                                                       <a href="edit-customer.html/<%= customers[i]['Customer_ID']%>"> <button type="submit" class="button1"><i class="fa fa-pencil"></i>
+                                                        </button></a>
                                                 </ul>
                                             </div>
                                         </td>
