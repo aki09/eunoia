@@ -43,10 +43,10 @@
                             <h6 class="font-weight-bold pt-4 pb-1">Customer ID</h6>
                             <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="cid" id="cid"
                                 placeholder="">
-                            <div class="price" id="new">
                                 <!-- <button onclick="addCode()">Add Stuff</button> -->
+                            <div class="price">
                                 <h6 class="font-weight-bold pt-4 pb-1">Item ID:</h6>
-                                <div class="row px-3">
+                                <div class="row px-3" id="new">
                                     <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
                                         <input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder=""
                                             id="iid">
@@ -59,9 +59,9 @@
                                     </div>
                                 </div>
 
-                                <h6 class="font-weight-bold pt-4 pb-1">Total Amount:</h6>
-                                <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="amt" id="amt"
-                                    placeholder="">
+                                <!-- <h6 class="font-weight-bold pt-4 pb-1">Total Amount:</h6> -->
+                                <!-- <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="amt" id="amt"
+                                    placeholder=""> -->
 
                                 <h6 class="font-weight-bold pt-4 pb-1">Payment Mode:</h6>
                                 <select name="paymode" id="paymode" class="w-100">
@@ -74,6 +74,7 @@
                                 <h6 class="font-weight-bold pt-4 pb-1">Payment Date:</h6>
                                 <input type="date" class="border w-100 p-2 bg-white text-capitalize" name="pdate"
                                     id="pdate" placeholder="">
+
                             </div>
                         </div>
                     </div>
@@ -92,12 +93,11 @@
             </form>
         </div>
     </section>
-    <script>
+    <!-- <script>
         function addCode() {
-            document.getElementById("new").innerHTML +=
-                '<h6 class="font-weight-bold pt-4 pb-1">Item ID:</h6><div class="row px-3"><div class="col-lg-4 mr-lg-4 rounded bg-white my-2 "><input type="text" name="price" class="border-0 py-2 w-100 price"placeholder="" id="price"></div></div>';
+            document.getElementById("new").innerHTML +='<div class="row px-3"><div class="col-lg-4 mr-lg-4 rounded bg-white my-2 "><input type="text" name="price" class="border-0 py-2 w-100 price"placeholder="" id="price"></div></div>';
         }
-    </script>
+    </script> -->
     <!--============================
 =            Footer            =
 =============================-->

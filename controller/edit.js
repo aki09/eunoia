@@ -59,54 +59,75 @@ exports.addOrder = (req, res) => {
     var add = req.body.add;
     var cid = req.body.cid;
     var iid = req.body.iid;
-    var amt = req.body.amt;
+    var amt = 0;
     var paymode = req.body.paymode;
     var pdate = req.body.pdate;
     var status = 'Pending';
-    var sql = "insert into orders set ?"
-    let o_post = { Order_ID: oid, Order_Date: odate, Amount: amt, Delivery_Address: add, Order_Status: status }
-    let ol_post = { Order_ID: oid, Item_ID: iid }
-    let co_post = { Customer_ID: cid, Order_ID: oid }
-    let pay_post = { Order_ID: oid, Amount: amt, Payment_Mode: paymode, Payment_Date: pdate }
 
-    connection.query(sql, o_post, (err, rows) => {
+
+    var sql = "select Price from inventory where Item_ID in (" + iid + ")";
+    connection.query(sql, (err, rows) => {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
-            
         }
-    });
-
-    var sql = "insert into order_list set ?"
-
-    connection.query(sql, ol_post, (err, rows) => {
-        if (err) {
-            throw err;
-        } else {
-            
+        for (let index = 0; index < rows.length; index++) {
+            amt = amt + rows[index]['Price'];
         }
-    });
+        console.log('amt1')
+        console.log(amt);
 
-    var sql = "insert into customer_order set ?"
+        console.log(amt);
 
-    connection.query(sql, co_post, (err, rows) => {
-        if (err) {
-            throw err;
-        } else {
-            
+        var sql = "insert into orders set ?"
+        let o_post = { Order_ID: oid, Order_Date: odate, Amount: amt, Delivery_Address: add, Order_Status: status }
+        let co_post = { Customer_ID: cid, Order_ID: oid }
+        let pay_post = { Order_ID: oid, Amount: amt, Payment_Mode: paymode, Payment_Date: pdate }
+
+        connection.query(sql, o_post, (err, rows) => {
+            if (err) {
+                throw err;
+            } else {
+
+            }
+        });
+
+        var sql = "insert into customer_order set ?"
+
+        connection.query(sql, co_post, (err, rows) => {
+            if (err) {
+                throw err;
+            } else {
+
+            }
+        });
+
+        var sql = "insert into payment set ?"
+
+        connection.query(sql, pay_post, (err, rows) => {
+            if (err) {
+                throw err;
+            } else {
+
+            }
+        });
+
+        for (let index = 0; index < iid.length; index++) {
+            let ol_post = { Order_ID: oid, Item_ID: iid[index] }
+            var sql = "insert into order_list set ?"
+
+            connection.query(sql, ol_post, (err, rows) => {
+                if (err) {
+                    throw err;
+                } else {
+
+                }
+            });
+
         }
-    });
 
-    var sql = "insert into payment set ?"
-
-    connection.query(sql, pay_post, (err, rows) => {
-        if (err) {
-            throw err;
-        } else {
-           
-        }
-    });
-    res.redirect('/ad-orders.html');
+        res.redirect('/ad-orders.html');
+    })
 }
 
 exports.filterInventory = (req, res) => {
@@ -155,32 +176,32 @@ exports.editCustomer = (req, res) => {
 
 exports.getEditCustomer = (req, res) => {
     const custId = req.params.id;
-	console.log('Customer ID');
-	console.log(custId);
-	let sql = 'select * from customers where Customer_ID = ' + custId;
-	const customer = [];
-	connection.query(sql, (err, rows) => {
-		if (err) {
-			throw err
-		} else {
-		}
-		
-		res.render('edit-customer', {customer: rows});
-	})
+    console.log('Customer ID');
+    console.log(custId);
+    let sql = 'select * from customers where Customer_ID = ' + custId;
+    const customer = [];
+    connection.query(sql, (err, rows) => {
+        if (err) {
+            throw err
+        } else {
+        }
+
+        res.render('edit-customer', { customer: rows });
+    })
 }
 
 exports.getEditInventory = (req, res) => {
     const id = req.params.id;
     let sql = 'select * from inventory where Item_ID = ' + id;
     const item = [];
-	connection.query(sql, (err, rows) => {
-		if (err) {
-			throw err
-		} else {
-		}
-		console.log(rows)
-		res.render('edit-inventory', {item: rows});
-	})
+    connection.query(sql, (err, rows) => {
+        if (err) {
+            throw err
+        } else {
+        }
+        console.log(rows)
+        res.render('edit-inventory', { item: rows });
+    })
 }
 
 exports.editInventory = (req, res) => {

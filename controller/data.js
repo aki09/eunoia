@@ -170,8 +170,6 @@ exports.getOrders = (req, res) => {
             if (err) {
             } else {
             }
-            console.log("Data")
-            console.log(data)
             res.render('dashboard', { orders: rows, items: data });
         })
     })
