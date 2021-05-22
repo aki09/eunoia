@@ -211,13 +211,21 @@ exports.editInventory = (req, res) => {
     var ig = req.body.ig;
     var condition = req.body.condition;
     var price = req.body.price;
-    let sql = "UPDATE Inventory SET ? WHERE Item_ID = " + id;
+    var old_price = req.body.old_price;
+    var amt = old_price - price;
+    var sql = "UPDATE Inventory SET ? WHERE Item_ID = " + id;
     let post = { Type: type, Status: status, Price: price, Item_Condition: condition, IG_Link: ig }
     connection.query(sql, post, (err, rows) => {
         if (err) {
             throw err
         } else {
         }
-        res.redirect('/category.html')
+        sql = "UPDATE Orders set Amount = Amount - " + amt;
+        connection.query(sql, (err, rows) => {
+            if (err) {
+
+            }
+            res.redirect('/category.html')
+        });
     })
 }
