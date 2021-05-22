@@ -229,3 +229,35 @@ exports.editInventory = (req, res) => {
         });
     })
 }
+
+exports.deleteOrderItem = (req, res) => {
+    var id = req.body.id;
+    var amt = req.body.amt;
+    var sql = "UPDATE Orders set Amount = Amount - " + amt;
+    connection.query(sql, (err, rows) => {
+        if (err) {
+
+        }
+    });
+
+    sql = "Delete from Order_List where Item_ID = " + id;
+    connection.query(sql, (err, rows) => {
+        if (err) {
+
+        }
+        res.redirect('/dashboard.html')
+    })
+
+}
+
+exports.getEditOrder = (req, res) => {
+    var id = req.params.id;
+    var sql = 'SELECT o.Order_ID, DATE_FORMAT(o.Order_Date, \'%d/%m/%y\') "Order_Date",o.Amount,o.Delivery_Address,o.Order_Status,c.Name,p.Payment_Mode,DATE_FORMAT(p.Payment_Date, \'%d/%m/%y\') "Payment_Date" FROM Orders o, Customer_Order co, Customers c, Payment p WHERE o.Order_ID = ' + id + ' AND o.Order_ID = co.Order_ID AND co.Customer_ID=c.Customer_ID AND (o.Order_ID=p.Order_ID)';
+    connection.query(sql, (err, rows) => {
+        if (err) {
+            throw err
+        } else {
+        }
+        res.render('edit-orders', { order: rows });
+    })
+}

@@ -42,25 +42,25 @@
                     <!-- Recently Favorited -->
                     <div class="widget dashboard-container my-adslist">
                         <div class="search-result bg-gray">
-                        <h2>CURRENT ORDERS </h2>
+                            <h2>CURRENT ORDERS </h2>
                         </div>
-                    <% for (var i=0; i<orders.length; i++) { %>
-                        <!-- <h2 class="widget-header">ORDER - 1</h2> -->
-                        <table class="table table-responsive product-dashboard-table">
-                            <tr> 
-                                <th rowspan="">Order <%= i + 1%></th>
-                                <th>
+                        <% for (var i=0; i<orders.length; i++) { %>
+                            <!-- <h2 class="widget-header">ORDER - 1</h2> -->
+                            <table class="table table-responsive product-dashboard-table">
+                                <tr>
+                                    <th rowspan="">Order <%= i + 1%>
+                                    </th>
+                                    <th>
                                     <td class="action" data-title="Action">
                                         <div class="col-md-10 offset-md-60 col-lg-4 offset-lg-60">
                                             <ul class="list-inline justify-content-center">
-                                                <button type="submit" class="button1" onclick="window.location.href='edit-orders.html';"><i class="fa fa-pencil"></i>
-                                                </button>
+                                                <a href="/edit-orders.html/<%= orders[i]['Order_ID']%>"><i class="fa fa-pencil"></i></a>
                                             </ul>
                                         </div>
                                     </td>
-                                </th>
-                            </tr>
-                        </table>
+                                    </th>
+                                </tr>
+                            </table>
                             <table class="table table-responsive product-dashboard-table">
                                 <td class="product-details">
                                     <span class=""><strong>Order ID:</strong>
@@ -89,35 +89,39 @@
                                         </time></span>
                                 </td>
                             </table>
-                        <% for (var j=0; j<items.length; j++) { %>
-                            <% if( orders[i]['Order_ID'] === items[j]['Order_ID'] ) { %>
-                                <table class="table table-responsive product-dashboard-table">
-                                    <tr>
-                                        <td class="product-details">
-                                            <h3 class="title">
-                                                <%= items[j]['Type']%>
-                                            </h3>
-                                            <span class="add-id"><strong>Item ID:</strong>
-                                                <%= items[j]['Item_ID']%>
-                                            </span><br>
+                            <% for (var j=0; j<items.length; j++) { %>
+                                <% if( orders[i]['Order_ID']===items[j]['Order_ID'] ) { %>
+                                    <table class="table table-responsive product-dashboard-table">
+                                        <tr>
+                                            <td class="product-details">
+                                                <h3 class="title">
+                                                    <%= items[j]['Type']%>
+                                                </h3>
+                                                <span class="add-id"><strong>Item ID:</strong>
+                                                    <%= items[j]['Item_ID']%>
+                                                </span><br>
 
-                                            <span class="add-id"><strong>Item Price:</strong>
-                                                <%= items[j]['Price']%>
-                                            </span><br>
-                                        </td>
-                                        <td class="action" data-title="Action">
-                                            <div class="">
-                                                <ul class="list-inline justify-content-center">
-                                                    <button type="submit" class="button1"><i
-                                                            class="fa fa-trash"></i></button>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            <%}%>
-                        <%}%>
-                    <%}%>
+                                                <span class="add-id"><strong>Item Price:</strong>
+                                                    <%= items[j]['Price']%>
+                                                </span><br>
+                                            </td>
+                                            <td class="action" data-title="Action">
+                                                <div class="">
+                                                    <ul class="list-inline justify-content-center">
+                                                        <form action="/dashboard.html" method="POST">
+                                                            <input type="hidden" name="id" id="id" value="<%= items[j]['Item_ID']%>">
+                                                            <input type="hidden" name="amt" id="amt" value="<%= items[j]['Price']%>">
+                                                            <button type="submit" class="button1"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                        </form>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <%}%>
+                                        <%}%>
+                                            <%}%>
                     </div>
                 </div>
             </div>
@@ -127,4 +131,4 @@
 =            Footer            =
 =============================-->
 
-<%- include("includes/footer") -%>
+    <%- include("includes/footer") -%>

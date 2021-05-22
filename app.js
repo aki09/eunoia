@@ -52,6 +52,10 @@ app.get('/edit-inventory.html/:id', editController.getEditInventory);
 
 app.post('/edit-inventory.html', editController.editInventory);
 
+app.get('/edit-orders.html/:id', editController.getEditOrder);
+
+app.post('/dashboard.html', editController.deleteOrderItem);
+
 app.listen(5000, function () {
 	console.log("Started");
 });
