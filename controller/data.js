@@ -78,6 +78,61 @@ orders = [
 	}
 ];
 
+rows = [
+    {
+      Order_ID: 101,
+      Order_Date: '14/05/21',
+      Amount: 450,
+      Delivery_Address: '29, Siri Fort Road',
+      Order_Status: 'Pending',
+      Name: 'Nishtha Wakankar',
+      Payment_Mode: 'Cash on Delivery',
+      Payment_Date: '14/05/21'
+    },
+    {
+      Order_ID: 102,
+      Order_Date: '15/05/21',
+      Amount: 50,
+      Delivery_Address: 'N2, Green Park Main',
+      Order_Status: 'Pending',
+      Name: 'Akshat Bhatia',
+      Payment_Mode: 'UPI',
+      Payment_Date: '15/05/21'
+    },
+    {
+      Order_ID: 103,
+      Order_Date: '21/05/21',
+      Amount: 500,
+      Delivery_Address: '123',
+      Order_Status: 'Pending',
+      Name: 'Ayush Anand',
+      Payment_Mode: 'Cash on Delivery',
+      Payment_Date: '21/05/21'
+    }
+  ]
+
+  data = [
+    {
+      Order_ID: 101,
+      Item_ID: 1,
+      Type: 'Slip Dress',
+      Price: 1100
+    },
+    {
+      Order_ID: 102,
+      Item_ID: 3,
+      Type: 'Graphic T-Shirt',
+      Price: 600
+    },
+    {
+      Order_ID: 103,
+      Item_ID: 4,
+      Type: 'Graphic T-Shirt',
+      Price: 500
+    }
+  ]
+  
+
 const mysql = require("mysql");
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -100,78 +155,80 @@ exports.getIndex = (req, res, next) => {
     var cust = 1;
     var cate = 1;
     var ord = 1;
-    var sql = 'SELECT ( SELECT COUNT(*) FROM Customers ) AS count1, ( SELECT COUNT(*) FROM Inventory ) AS count2, ( SELECT COUNT(*) FROM Orders ) AS count3 FROM dual';
-    connection.query(sql, (err, data) => {
-        if (err) {
-        } else {
-        }
-        cust = data[0]['count1'];
-        cate = data[0]['count2'];
-        ord = data[0]['count3'];
-    })
-    recent_item = [];
-    sql = 'SELECT * FROM Inventory ORDER BY Item_ID DESC LIMIT 5';
-    connection.query(sql, (err, rows) => {
-        if (err) {
-            throw err;
-        } else {
-        }
-        for (let index = 0; index < rows.length; index++) {
-            recent_item.push(rows[index]);      
-        }
-        res.render('index', { items: recent_item, customer_count: cust, item_count: cate, order_count: ord });
-    })
+    // var sql = 'SELECT ( SELECT COUNT(*) FROM Customers ) AS count1, ( SELECT COUNT(*) FROM Inventory ) AS count2, ( SELECT COUNT(*) FROM Orders ) AS count3 FROM dual';
+    // connection.query(sql, (err, data) => {
+    //     if (err) {
+    //     } else {
+    //     }
+    //     cust = data[0]['count1'];
+    //     cate = data[0]['count2'];
+    //     ord = data[0]['count3'];
+    // })
+    // recent_item = [];
+    // sql = 'SELECT * FROM Inventory ORDER BY Item_ID DESC LIMIT 5';
+    // connection.query(sql, (err, rows) => {
+    //     if (err) {
+    //         throw err;
+    //     } else {
+    //     }
+    //     for (let index = 0; index < rows.length; index++) {
+    //         recent_item.push(rows[index]);      
+    //     }
+    //     res.render('index', { items: recent_item, customer_count: cust, item_count: cate, order_count: ord });
+    // })
+    res.render('index', { items: recent_item, customer_count: cust, item_count: cate, order_count: ord });
 }
 
 exports.getInvetory = (req, res) => {
-    items = [];
-    let sql = 'select * from Inventory';
-    connection.query(sql, (err, rows) => {
-        if (err) {
-            throw err
-        } else {
-        }
-        for (let i = 0; i < rows.length; i++) {
-            items.push(rows[i]);
-        }
-        res.render('category', { inventory: items });
-    })
-    // res.render('category', { inventory: items });
+    // items = [];
+    // let sql = 'select * from Inventory';
+    // connection.query(sql, (err, rows) => {
+    //     if (err) {
+    //         throw err
+    //     } else {
+    //     }
+    //     for (let i = 0; i < rows.length; i++) {
+    //         items.push(rows[i]);
+    //     }
+    //     res.render('category', { inventory: items });
+    // })
+    res.render('category', { inventory: items });
     // console.log(post)
 }
 
 exports.getCustomer = (req, res) => {
-    let sql = 'select * from customers';
-    customers = [];
-    connection.query(sql, (err, rows) => {
-        if (err) {
-            throw err
-        } else {
-        }
-        for (let i = 0; i < rows.length; i++) {
-            customers.push(rows[i]);
-        }
-        console.log(customers);
-        res.render('customers', { customers: customers });
-    })
-    //  res.render('customers', { customers: customers });
+    // let sql = 'select * from customers';
+    // customers = [];
+    // connection.query(sql, (err, rows) => {
+    //     if (err) {
+    //         throw err
+    //     } else {
+    //     }
+    //     for (let i = 0; i < rows.length; i++) {
+    //         customers.push(rows[i]);
+    //     }
+    //     console.log(customers);
+    //     res.render('customers', { customers: customers });
+    // })
+     res.render('customers', { customers: customers });
 }
 
 exports.getOrders = (req, res) => {
-    var sql = 'SELECT o.Order_ID, DATE_FORMAT(o.Order_Date, \'%d/%m/%y\') "Order_Date",o.Amount,o.Delivery_Address,o.Order_Status,c.Name,p.Payment_Mode,DATE_FORMAT(p.Payment_Date, \'%d/%m/%y\') "Payment_Date" FROM Orders o, Customer_Order co, Customers c, Payment p WHERE o.Order_ID=co.Order_ID AND co.Customer_ID=c.Customer_ID AND(o.Order_ID=p.Order_ID)';
-    orders = [];
-    connection.query(sql, (err, rows) => {
-        if (err) {
-            throw err
-        } else {
-        }
-        sql= "SELECT o.Order_ID,i.Item_ID,i.Type,i.Price FROM Inventory i, Order_List ol, Orders o WHERE ol.Item_ID=i.Item_ID AND o.Order_ID=ol.Order_ID";
-        connection.query(sql, (err, data) => {
-            if (err) {
-            } else {
-            }
-            res.render('dashboard', { orders: rows, items: data });
-        })
-    })
-    //  res.render('dashboard', { orders: orders, customers: customers, payment: payment, order_item: order_item });
+    // var sql = 'SELECT o.Order_ID, DATE_FORMAT(o.Order_Date, \'%d/%m/%y\') "Order_Date",o.Amount,o.Delivery_Address,o.Order_Status,c.Name,p.Payment_Mode,DATE_FORMAT(p.Payment_Date, \'%d/%m/%y\') "Payment_Date" FROM Orders o, Customer_Order co, Customers c, Payment p WHERE o.Order_ID=co.Order_ID AND co.Customer_ID=c.Customer_ID AND(o.Order_ID=p.Order_ID)';
+    // orders = [];
+    // connection.query(sql, (err, rows) => {
+    //     if (err) {
+    //         throw err
+    //     } else {
+    //     }
+    //     sql= "SELECT o.Order_ID,i.Item_ID,i.Type,i.Price FROM Inventory i, Order_List ol, Orders o WHERE ol.Item_ID=i.Item_ID AND o.Order_ID=ol.Order_ID";
+    //     connection.query(sql, (err, data) => {
+    //         if (err) {
+    //         } else {
+    //         }
+    //         console.log(data)
+    //         res.render('dashboard', { orders: rows, items: data });
+    //     })
+    // })
+    res.render('dashboard', { orders: rows, items: data });
 }
