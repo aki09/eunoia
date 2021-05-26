@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const adminController = require("./controller/admin");
 const dataController = require("./controller/data");
 const editController = require("./controller/edit");
+const errorController = require("./controller/error");
 
 const app = express();
 
@@ -55,6 +56,8 @@ app.post('/edit-inventory.html', editController.editInventory);
 app.get('/edit-orders.html/:id', editController.getEditOrder);
 
 app.post('/dashboard.html', editController.deleteOrderItem);
+
+app.use(errorController.get404);
 
 app.listen(5000, function () {
 	console.log("Started");
