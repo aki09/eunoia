@@ -352,9 +352,7 @@ exports.EditOrder = (req, res) => {
     var iid = req.body.iid;
     var mode = req.body.paymode;
     var amt = parseInt(req.body.amt);
-
-    console.log("HERRE")
-    console.log(oid);
+    var status = req.body.status;
 
     var sql = "select Price from inventory where Item_ID in (" + iid + ")";
     connection.query(sql, (err, rows) => {
@@ -362,22 +360,9 @@ exports.EditOrder = (req, res) => {
             for (let index = 0; index < rows.length; index++) {
                 amt = amt + rows[index]['Price'];
             }
-            for (let index = 0; index < iid.length; index++) {
-                let ol_post = { Order_ID: oid, Item_ID: iid[index] }
-                sql = "insert into order_list set ?"
-
-                connection.query(sql, ol_post, (err, rows) => {
-                    if (err) {
-                        throw err;
-                    } else {
-
-                    }
-                });
-
-            }
         }
         sql = 'UPDATE Orders set ? ' + 'where Order_ID = ' + oid;
-        post = { Delivery_Address: add, Amount: amt }
+        post = { Delivery_Address: add, Amount: amt , Order_Status: status}
         connection.query(sql, post, (err, rows) => {
             if (err) {
                 throw err;
@@ -388,11 +373,28 @@ exports.EditOrder = (req, res) => {
             var p_post = { Payment_Mode: mode }
             connection.query(sql, p_post, (err, rows) => {
                 if (err) {
-
+                    throw err
                 }
+                if (iid.length > 0) {
+                    for (let index = 0; index < iid.length; index++) {
+                        let ol_post = { Order_ID: oid, Item_ID: iid[index] }
+                        sql = "insert into order_list set ?"
+
+                        connection.query(sql, ol_post, (err, rows) => {
+                            if (err) {
+                                throw err;
+                            } else {
+
+                            }
+                            res.redirect('/dashboard.html');
+                        });
+
+                    }
+                }
+                res.redirect('/dashboard.html');
+
             });
 
-        })
+        });
     })
-    res.redirect('/dashboard.html');
 }
