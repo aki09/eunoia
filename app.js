@@ -57,6 +57,8 @@ app.get('/edit-orders.html/:id', editController.getEditOrder);
 
 app.post('/dashboard.html', editController.deleteOrderItem);
 
+app.post('/edit-orders.html', editController.EditOrder);
+
 app.use(errorController.get404);
 
 app.listen(5000, function () {

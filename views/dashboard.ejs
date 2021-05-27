@@ -109,6 +109,7 @@
                                                 <div class="">
                                                     <ul class="list-inline justify-content-center">
                                                         <form action="/dashboard.html" method="POST">
+                                                            <input type="hidden" name="oid" id="oid" value="<%= orders[i]['Order_ID']%>">
                                                             <input type="hidden" name="id" id="id" value="<%= items[j]['Item_ID']%>">
                                                             <input type="hidden" name="amt" id="amt" value="<%= items[j]['Price']%>">
                                                             <button type="submit" class="button1"><i

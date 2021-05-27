@@ -20,7 +20,7 @@
 
     <section class="ad-post bg-gray py-5">
         <div class="container">
-            <form action='/ad-orders.html' method="POST">
+            <form action='/edit-orders.html' method="POST">
                 <!-- Post Your ad start -->
                 <fieldset class="border border-gary p-4 mb-5">
                     <div class="row">
@@ -32,18 +32,23 @@
                             <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="oid" id="oid"
                                 value="<%= order[0]['Order_ID'] %>" readonly>
 
-                            <h6 class="font-weight-bold pt-4 pb-1">Order Date:</h6>
+                            <!-- <h6 class="font-weight-bold pt-4 pb-1">Order Date:</h6>
                             <input type="date" class="border w-100 p-2 bg-white text-capitalize" name="odate" id="odate"
-                                value="<%= order[0]['Order_Date'] %>">
+                                value="<%= order[0]['Order_Date'] %>"> -->
+
+                            <h6 class="font-weight-bold pt-4 pb-1">Amount:</h6>
+                            <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="amt" id="amt"
+                                value="<%= order[0]['Amount'] %>" readonly>
 
                             <h6 class="font-weight-bold pt-4 pb-1">Address:</h6>
-                            <textarea name="add" id="add" class="border p-3 w-100" rows="7" placeholder=""><%= order[0]['Delivery_Address'] %></textarea>
+                            <textarea name="add" id="add" class="border p-3 w-100" rows="7"
+                                placeholder=""><%= order[0]['Delivery_Address'] %></textarea>
                         </div>
                         <div class="col-lg-6">
                             <h6 class="font-weight-bold pt-4 pb-1">Customer Name</h6>
                             <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="cname" id="cname"
                                 value="<%= order[0]['Name'] %>" readonly>
-                                <!-- <button onclick="addCode()">Add Stuff</button> -->
+                            <!-- <button onclick="addCode()">Add Stuff</button> -->
                             <div class="price">
                                 <h6 class="font-weight-bold pt-4 pb-1"> New Item ID:</h6>
                                 <div class="row px-3" id="new">
@@ -53,11 +58,11 @@
                                     </div>
                                 </div>
 
-                                <div class="row px-3">
+                                <!-- <div class="row px-3">
                                     <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
                                         <input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder="">
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <h6 class="font-weight-bold pt-4 pb-1">Payment Mode:</h6>
                                 <select name="paymode" id="paymode" class="w-100">
@@ -67,13 +72,9 @@
                                     <option value="Debit Card">Debit Card</option>
                                 </select>
 
-                                <h6 class="font-weight-bold pt-4 pb-1">Amount:</h6>
-                                <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="amt"
-                                    id="amt" value="<%= order[0]['Amount'] %>" readonly>
-
-                                <h6 class="font-weight-bold pt-4 pb-1">Payment Date:</h6>
+                                <!-- <h6 class="font-weight-bold pt-4 pb-1">Payment Date:</h6>
                                 <input type="date" class="border w-100 p-2 bg-white text-capitalize" name="pdate"
-                                    id="pdate" value="<%= order[0]['Payment_Date'] %>">
+                                    id="pdate" value="<%= order[0]['Payment_Date'] %>"> -->
 
                             </div>
                         </div>
@@ -89,6 +90,7 @@
                 <!-- ad-feature start -->
 
                 <!-- submit button -->
+                <input type="hidden" name="id" id="id" value="<%= order[0]['Order_ID'] %>">
                 <button type="submit" class="btn btn-primary d-block mt-2">CHANGE</button>
             </form>
         </div>
