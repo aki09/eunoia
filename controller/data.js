@@ -232,3 +232,7 @@ exports.getOrders = (req, res) => {
     })
     // res.render('dashboard', { orders: rows, items: data });
 }
+
+exports.getSingleCustomer = (req, res) => {
+    res.render('single');
+}

@@ -35,6 +35,8 @@ app.get('/category.html', dataController.getInvetory);
 
 app.get('/customer.html', dataController.getCustomer);
 
+app.get('/single.html', dataController.getSingleCustomer);
+
 app.get('/dashboard.html', dataController.getOrders);
 
 app.post('/ad-listing.html', editController.addInventory);

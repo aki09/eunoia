@@ -43,22 +43,7 @@
                             <h6 class="font-weight-bold pt-4 pb-1">Customer ID</h6>
                             <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="cid" id="cid"
                                 placeholder="">
-                                <!-- <button onclick="addCode()">Add Stuff</button> -->
-                            <div class="price">
-                                <h6 class="font-weight-bold pt-4 pb-1">Item ID:</h6>
-                                <div class="row px-3" id="new">
-                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
-                                        <input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder=""
-                                            id="iid">
-                                    </div>
-                                </div>
-
-                                <div class="row px-3">
-                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
-                                        <input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder="">
-                                    </div>
-                                </div>
-
+                            <div class="price" id="new">
                                 <!-- <h6 class="font-weight-bold pt-4 pb-1">Total Amount:</h6> -->
                                 <!-- <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="amt" id="amt"
                                     placeholder=""> -->
@@ -74,6 +59,22 @@
                                 <h6 class="font-weight-bold pt-4 pb-1">Payment Date:</h6>
                                 <input type="date" class="border w-100 p-2 bg-white text-capitalize" name="pdate"
                                     id="pdate" placeholder="">
+
+                                <h6 class="font-weight-bold pt-4 pb-1">Item ID:</h6>
+                                <button type="button" class="button1" onclick="addCode()"><i class="fa fa-plus"></i></button>
+                                <!-- <button type="button" class="button1" onclick="removeCode()"><i class="fa fa-minus"></i></button> -->
+                                <div class="row px-3" id="old">
+                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
+                                        <input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder=""
+                                            id="iid">
+                                    </div>
+                                </div>
+
+                                <!-- <div class="row px-3">
+                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
+                                        <input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder="">
+                                    </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -93,11 +94,15 @@
             </form>
         </div>
     </section>
-    <!-- <script>
+    <script>
         function addCode() {
-            document.getElementById("new").innerHTML +='<div class="row px-3"><div class="col-lg-4 mr-lg-4 rounded bg-white my-2 "><input type="text" name="price" class="border-0 py-2 w-100 price"placeholder="" id="price"></div></div>';
+            document.getElementById("new").innerHTML += '<div class="row px-3"><div class="col-lg-4 mr-lg-4 rounded bg-white my-2 "><input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder=""></div></div>';
         }
-    </script> -->
+
+        // function removeCode() {
+        //     document.getElementById("old").innerHTML -= '<div class="row px-3"><div class="col-lg-4 mr-lg-4 rounded bg-white my-2 "><input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder=""></div></div>';
+        // }
+    </script>
     <!--============================
 =            Footer            =
 =============================-->
