@@ -1,11 +1,5 @@
 <%- include("includes/header") -%>
     <ul class="navbar-nav ml-auto mt-10">
-        <!-- <li class="nav-item">
-            <a class="nav-link login-button" href="login.html">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link login-button" href="user-profile.html">Edit Profile</a>
-        </li> -->
         <li class="nav-item">
             <a class="nav-link text-white add-button" href="ad-customer.html"><i class="fa fa-plus-circle"></i> Add
                 Customer</a>
@@ -17,40 +11,22 @@
     </div>
     </div>
     </section>
-    <!--==================================
-=            User Profile            =
-===================================-->
+
 <section class="hero-area bg-6 text-center overly">
-    <!-- Container Start -->
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="content-block"><br><br>
-                    <!-- <h2>Join us get more exposure and
-                    grow your business</h2> --><br><br><br>
-                    <!-- <ul class="list-inline mt-30">
-                    <li class="list-inline-item"><a class="btn btn-secondary" href="about-us.html">About Us</a></li>
-                    !-- <li class="list-inline-item"><a class="btn btn-secondary" href="contact-us.html">Contact
-                            Us</a></li> -->
-                    <!-- </ul>  -->
-
+                <div class="content-block">
+                    <br><br><br><br><br><br>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Container End -->
 </section>   
 <section class="dashboard section">
-        <!-- Container Start -->
         <div class="container">
-            <!-- Row Start -->
             <div class="row">
-                <!-- <div class="col-md-50 offset-md-2 col-lg-40 offset-lg-2">
-                    <div class="sidebar">                      
-                    </div>
-                </div> -->
                 <div class="col-md-10 offset-md-60 col-lg-40 offset-lg-60">
-                    <!-- Recently Favorited -->
                     <div class="widget dashboard-container my-adslist">
                         <h2 class="search-result bg-gray">CUSTOMERS DETAILS</h2>
                         <table class="table table-responsive product-dashboard-table">
@@ -88,8 +64,8 @@
                                         <td class="action" data-title="Action">
                                             <div class="">
                                                 <ul class="list-inline justify-content-center">
-                                                    <a href="single.html" class="button1"><i class="fa fa-eye"></i></a>
-                                                    <a href="edit-customer.html/<%= customers[i]['Customer_ID']%>" class="button1"><i class="fa fa-pencil"></i></a>
+                                                    <a href="single.html" class="button2"><i class="fa fa-eye"></i></a>
+                                                    <a href="edit-customer.html/<%= customers[i]['Customer_ID']%>" class="button2"><i class="fa fa-pencil"></i></a>
                                                 </ul>
                                             </div>
                                         </td>

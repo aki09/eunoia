@@ -656,12 +656,12 @@ ul.pagination .active a {
   background: #5672f9;
 }
 .bg-5{
-  background: url(../images/call-to-action/bg2-copy.png);
+  background: url(../images/call-to-action/2.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .bg-6{
-  background: url(../images/call-to-action/thumbsup.jpg);
+  background: url(../images/call-to-action/cust.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1595,7 +1595,7 @@ NAVIGATION BAR */
 }
 
 .product-slider {
-  padding: 40px 0;
+  padding: 100px 0;
 }
 
 .product-slider .carousel-indicators li {
@@ -2600,11 +2600,11 @@ form textarea {
 }
 
 .footer .block.about p {
-  line-height: 26px;
+  line-height: 20px;
 }
 
 .footer .block ul li {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .footer .block ul li a {
@@ -2733,6 +2733,24 @@ form textarea {
   background-color: RoyalBlue;
   color:white;
 }
+.button2 {
+  background-color: #f7f7f7; /* Green */
+  border: none;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+.button2:hover {
+  background-color: RoyalBlue;
+  /* color:white; */
+}
+
 
 /* .table1 td{
   margin-left: auto;
