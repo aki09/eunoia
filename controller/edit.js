@@ -1,20 +1,20 @@
-const mysql = require("mysql");
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'nishtha',
-    database: 'dbdb',
-    port: 3306
-});
+// const mysql = require("mysql");
+// var connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'nishtha',
+//     database: 'dbdb',
+//     port: 3306
+// });
 
-connection.connect((err) => {
-    if (err) {
-        console.log("ERRE")
-    }
-    else {
-        console.log("HELLOO NISHTHAAA")
-    }
-});
+// connection.connect((err) => {
+//     if (err) {
+//         console.log("ERRE")
+//     }
+//     else {
+//         console.log("HELLOO NISHTHAAA")
+//     }
+// });
 
 var items = [];
 var customers = [];
