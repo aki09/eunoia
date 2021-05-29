@@ -1,20 +1,20 @@
-// const mysql = require("mysql");
-// var connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'nishtha',
-//     database: 'dbdb',
-//     port: 3306
-// });
+const mysql = require("mysql");
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'nishtha',
+    database: 'dbdb',
+    port: 3306
+});
 
-// connection.connect((err) => {
-//     if (err) {
-//         console.log("ERRE")
-//     }
-//     else {
-//         console.log("HELLOO NISHTHAAA")
-//     }
-// });
+connection.connect((err) => {
+    if (err) {
+        console.log("ERRE")
+    }
+    else {
+        console.log("HELLOO NISHTHAAA")
+    }
+});
 
 var items = [];
 var customers = [];
@@ -377,7 +377,7 @@ exports.EditOrder = (req, res) => {
                 }
                 if (iid.length > 0) {
                     for (let index = 0; index < iid.length; index++) {
-                        let ol_post = { Order_ID: oid, Item_ID: iid[index] }
+                        var ol_post = { Order_ID: oid, Item_ID: iid[index] }
                         sql = "insert into order_list set ?"
 
                         connection.query(sql, ol_post, (err, rows) => {
@@ -386,13 +386,12 @@ exports.EditOrder = (req, res) => {
                             } else {
 
                             }
-                            res.redirect('/dashboard.html');
+                            // res.redirect('/dashboard.html');
                         });
-
                     }
                 }
-                res.redirect('/dashboard.html');
 
+                res.redirect('/dashboard.html');
             });
 
         });
