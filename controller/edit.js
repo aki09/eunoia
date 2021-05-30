@@ -302,7 +302,7 @@ exports.editInventory = (req, res) => {
             throw err
         } else {
         }
-        sql = "UPDATE Orders set Amount = Amount - " + amt;
+        sql = "UPDATE Orders set Amount = Amount - " + amt + " WHERE Order_ID = (SELECT Order_ID FROM Order_List WHERE Item_ID = " + id + ")";
         connection.query(sql, (err, rows) => {
             if (err) {
 

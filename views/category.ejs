@@ -1,11 +1,5 @@
 <%- include("includes/header") -%>
     <ul class="navbar-nav ml-auto mt-10">
-        <!-- <li class="nav-item">
-            <a class="nav-link login-button" href="login.html">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link login-button" href="user-profile.html">Edit Profile</a>
-        </li> -->
         <li class="nav-item">
             <a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Add
                 Items</a>
@@ -59,7 +53,6 @@
                                     <option value="New">New</option>
                                     <option value="Defected">Defected</option>
                                 </select>
-                                <!-- <button type="submit" class="btn btn-primary d-block mt-2">Submit</button> -->
                             </div>
                             <ul class="list-inline mt-20">
                                 <li class="list-inline-item">
@@ -67,8 +60,6 @@
                                 </li>
                                 <li class="list-inline-item"><button type="submit" class="btn btn-primary d-block mt-2">Apply</button></li>
                             </ul>
-                            <!-- <button type="reset" class="btn btn-primary d-block mt-2" onclick="window.location.href='category.html';">Reset Changes</button>
-                            <button type="submit" class="btn btn-primary d-block mt-2">Apply Changes</button>    -->
                           </div>
                     </div>
             </form>
@@ -85,9 +76,6 @@
                                         <a href="#" onclick="event.preventDefault();" class="text-info"><i
                                                 class="fa fa-th-large"></i></a>
                                     </li>
-                                    <!-- <li class="list-inline-item">
-                                            <a href="ad-list-view.html"><i class="fa fa-reorder"></i></a>
-                                        </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -96,9 +84,6 @@
                 <div class="product-grid-list">
                     <div class="row mt-30">
                         <% for (var i=0; i<inventory.length; i++) { %>
-                            <!-- <li>
-                            <%= inventory[i]['Price'] %>
-                            </li> -->
                             <div class="col-sm-12 col-lg-4 col-md-6">
                                 <div class="product-item bg-light">
                                     <div class="card">
@@ -144,8 +129,5 @@
         </div>
         </div>
     </section>
-    <!--============================
-=            Footer            =
-=============================-->
 
     <%- include("includes/footer") -%>

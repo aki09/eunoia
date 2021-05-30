@@ -11,8 +11,8 @@
     </div>
     </div>
     </section>
-    
-<section class="hero-area bg-5 text-center overly">
+
+    <section class="hero-area bg-5 text-center overly">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -22,34 +22,23 @@
                 </div>
             </div>
         </div>
-</section>
+    </section>
     <section class="dashboard section">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-60 col-lg-40 offset-lg-60">
                     <div class="widget dashboard-container my-adslist">
-                        <!-- <div class="search-result bg-gray"> -->
-                            <h2 class="search-result bg-gray">CURRENT ORDERS </h2>
-                        <!-- </div> -->
+                        <h2 class="search-result bg-gray">CURRENT ORDERS </h2>
                         <% for (var i=0; i<orders.length; i++) { %>
-                            <!-- <h2 class="widget-header">ORDER - 1</h2> -->
                             <table class="table table-responsive product-dashboard-table">
                                 <thead>
                                     <tr>
                                         <th><b>&nbsp;&nbsp;Order : &nbsp;<%= i + 1%></b></th>
                                         <th class="text-center" data-title="Action">
                                             <div class="col-md-20 offset-md-10 col-lg-1 offset-lg-6">
-                                                <!-- <ul class="list-inline justify-content-center"> -->
-                                                    <a href="/edit-orders.html/<%= orders[i]['Order_ID']%>"><i class="fa fa-pencil"></i></a>
-                                                <!-- </ul> -->
+                                                <a href="/edit-orders.html/<%= orders[i]['Order_ID']%>"><i
+                                                        class="fa fa-pencil"></i></a>
                                             </div>
-                                        <!-- <td class="action" data-title="Action">
-                                            <div class="col-md-10 offset-md-60 col-lg-4 offset-lg-60">
-                                                <ul class="list-inline justify-content-center">
-                                                    <a href="/edit-orders.html/<%= orders[i]['Order_ID']%>"><i class="fa fa-pencil"></i></a>
-                                                </ul>
-                                            </div>
-                                        </td> -->
                                         </th>
                                     </tr>
                                 </thead>
@@ -102,9 +91,12 @@
                                                 <div class="col-md-1 offset-md-0 col-lg-0 offset-lg-0">
                                                     <ul class="list-inline justify-content-center">
                                                         <form action="/dashboard.html" method="POST">
-                                                            <input type="hidden" name="oid" id="oid" value="<%= orders[i]['Order_ID']%>">
-                                                            <input type="hidden" name="id" id="id" value="<%= items[j]['Item_ID']%>">
-                                                            <input type="hidden" name="amt" id="amt" value="<%= items[j]['Price']%>">
+                                                            <input type="hidden" name="oid" id="oid"
+                                                                value="<%= orders[i]['Order_ID']%>">
+                                                            <input type="hidden" name="id" id="id"
+                                                                value="<%= items[j]['Item_ID']%>">
+                                                            <input type="hidden" name="amt" id="amt"
+                                                                value="<%= items[j]['Price']%>">
                                                             <button type="submit" class="button1"><i
                                                                     class="fa fa-trash"></i></button>
                                                         </form>
@@ -121,8 +113,4 @@
             </div>
         </div>
     </section>
-    <!--============================
-=            Footer            =
-=============================-->
-
     <%- include("includes/footer") -%>

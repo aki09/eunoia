@@ -11,7 +11,6 @@
     <section class="ad-post bg-gray py-5">
         <div class="container">
             <form action='/edit-inventory.html' method="POST">
-                <!-- Post Your ad start -->
                 <fieldset class="border border-gary p-4 mb-5">
                     <div class="row">
                         <div class="col-lg-12">
@@ -54,23 +53,11 @@
                         </div>
                     </div>
                 </fieldset>
-                <!-- Post Your ad end -->
-
-                <!-- seller-information start -->
-                <!-- seller-information end-->
-
-                <!-- ad-feature start -->
-                <!-- ad-feature start -->
-
-                <!-- submit button -->
                 <input type="hidden" name="id" id="id" value="<%= item[0]['Item_ID'] %>">
                 <input type="hidden" name="old_price" id="old_price" value="<%= item[0]['Price'] %>">
                 <button type="submit" class="btn btn-primary d-block mt-2">Change</button>
             </form>
         </div>
     </section>
-    <!--============================
-=            Footer            =
-=============================-->
 
     <%- include("includes/footer") -%>

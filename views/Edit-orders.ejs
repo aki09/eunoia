@@ -48,14 +48,7 @@
                             <h6 class="font-weight-bold pt-4 pb-1">Customer Name</h6>
                             <input type="text" class="border w-100 p-2 bg-white text-capitalize" name="cname" id="cname"
                                 value="<%= order[0]['Name'] %>" readonly>
-                            <!-- <button onclick="addCode()">Add Stuff</button> -->
                             <div class="price" id="new">
-
-                                <!-- <div class="row px-3">
-                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
-                                        <input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder="">
-                                    </div>
-                                </div> -->
 
                                 <h6 class="font-weight-bold pt-4 pb-1">Payment Mode:</h6>
                                 <select name="paymode" id="paymode" class="w-100">
@@ -72,10 +65,6 @@
                                     <option value="Delivered">Delivered</option>
                                 </select>
 
-                                <!-- <h6 class="font-weight-bold pt-4 pb-1">Payment Date:</h6>
-                                <input type="date" class="border w-100 p-2 bg-white text-capitalize" name="pdate"
-                                    id="pdate" value="<%= order[0]['Payment_Date'] %>"> -->
-
                                 <h6 class="font-weight-bold pt-4 pb-1"> New Item ID:</h6>
                                 <button type="button" class="button1" onclick="addCode()"><i class="fa fa-plus"></i></button>
                                 <div class="row px-3">
@@ -89,16 +78,6 @@
                         </div>
                     </div>
                 </fieldset>
-                <!-- Post Your ad end -->
-
-                <!-- seller-information start -->
-
-                <!-- seller-information end-->
-
-                <!-- ad-feature start -->
-                <!-- ad-feature start -->
-
-                <!-- submit button -->
                 <input type="hidden" name="id" id="id" value="<%= order[0]['Order_ID'] %>">
                 <button type="submit" class="btn btn-primary d-block mt-2">CHANGE</button>
             </form>
@@ -109,8 +88,5 @@
             document.getElementById("new").innerHTML += '<div class="row px-3"><div class="col-lg-4 mr-lg-4 rounded bg-white my-2 "><input type="text" name="iid" class="border-0 py-2 w-100 price" placeholder=""></div></div>';
         }
     </script>
-    <!--============================
-=            Footer            =
-=============================-->
 
-    <%- include("includes/footer") -%>
+<%- include("includes/footer") -%>
