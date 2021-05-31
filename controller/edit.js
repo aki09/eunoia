@@ -191,9 +191,22 @@ exports.addOrder = (req, res) => {
 
             }
         });
+        if (typeof (iid) === "object") {
+            for (let index = 0; index < iid.length; index++) {
+                let ol_post = { Order_ID: oid, Item_ID: iid[index] }
+                var sql = "insert into order_list set ?"
 
-        for (let index = 0; index < iid.length; index++) {
-            let ol_post = { Order_ID: oid, Item_ID: iid[index] }
+                connection.query(sql, ol_post, (err, rows) => {
+                    if (err) {
+                        throw err;
+                    } else {
+
+                    }
+                });
+
+            }
+        } else if (typeof (iid) === "string") {
+            let ol_post = { Order_ID: oid, Item_ID: iid }
             var sql = "insert into order_list set ?"
 
             connection.query(sql, ol_post, (err, rows) => {
@@ -203,9 +216,7 @@ exports.addOrder = (req, res) => {
 
                 }
             });
-
         }
-
         res.redirect('/ad-orders.html');
     })
 }
@@ -322,14 +333,27 @@ exports.deleteOrderItem = (req, res) => {
 
         }
     });
-
-    sql = "Delete from Order_List where Item_ID = " + id;
-    connection.query(sql, (err, rows) => {
-        if (err) {
-
+    sql = "select count(*) from order_list where Order_ID = " + oid;
+    connection.query(sql, (err, row) => {
+        console.log(row)
+        if (row[0]['count(*)'] === 1) {
+            sql = 'Delete from Orders where Order_ID = ' + oid;
+            connection.query(sql, (err, row) => {
+                res.redirect('/dashboard.html')
+            })
         }
-        res.redirect('/dashboard.html')
+        else {
+            sql = "Delete from Order_List where Item_ID = " + id;
+            connection.query(sql, (err, rows) => {
+                if (err) {
+
+                }
+                res.redirect('/dashboard.html')
+            })
+        }
     })
+
+
 
 }
 
@@ -353,6 +377,8 @@ exports.EditOrder = (req, res) => {
     var mode = req.body.paymode;
     var amt = parseInt(req.body.amt);
     var status = req.body.status;
+    console.log("HERRRERER")
+    console.log(typeof (iid))
 
     var sql = "select Price from inventory where Item_ID in (" + iid + ")";
     connection.query(sql, (err, rows) => {
@@ -362,7 +388,7 @@ exports.EditOrder = (req, res) => {
             }
         }
         sql = 'UPDATE Orders set ? ' + 'where Order_ID = ' + oid;
-        post = { Delivery_Address: add, Amount: amt , Order_Status: status}
+        post = { Delivery_Address: add, Amount: amt, Order_Status: status }
         connection.query(sql, post, (err, rows) => {
             if (err) {
                 throw err;
@@ -375,11 +401,12 @@ exports.EditOrder = (req, res) => {
                 if (err) {
                     throw err
                 }
-                if (iid.length > 0) {
+                if ((iid.length > 0) && (typeof (iid) === "object")) {
                     for (let index = 0; index < iid.length; index++) {
+                        console.log("IN LOOP")
+                        console.log(iid[index])
                         var ol_post = { Order_ID: oid, Item_ID: iid[index] }
                         sql = "insert into order_list set ?"
-
                         connection.query(sql, ol_post, (err, rows) => {
                             if (err) {
                                 throw err;
@@ -389,6 +416,17 @@ exports.EditOrder = (req, res) => {
                             // res.redirect('/dashboard.html');
                         });
                     }
+                } else if ((typeof (iid) === "string") && (iid.length > 0)) {
+                    var ol_post = { Order_ID: oid, Item_ID: iid }
+                    sql = "insert into order_list set ?"
+                    connection.query(sql, ol_post, (err, rows) => {
+                        if (err) {
+                            throw err;
+                        } else {
+
+                        }
+                        // res.redirect('/dashboard.html');
+                    });
                 }
 
                 res.redirect('/dashboard.html');
