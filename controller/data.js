@@ -147,7 +147,7 @@ connection.connect((err) => {
         console.log("ERRE")
     }
     else {
-        console.log("HELLOO NISHTHAAA")
+        console.log("HELLOO")
     }
 });
 

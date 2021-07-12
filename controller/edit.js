@@ -12,7 +12,7 @@ connection.connect((err) => {
         console.log("ERRE")
     }
     else {
-        console.log("HELLOO NISHTHAAA")
+        console.log("HELLOO")
     }
 });
 
@@ -22,79 +22,6 @@ var orders = [];
 var payment = [];
 var order_item = [];
 var recent_item = [];
-
-order_item = [
-    { Item_ID: 1, Type: 'Slip Dress', Price: 1300 },
-    { Item_ID: 3, Type: 'Graphic T-Shirt', Price: 600 }
-];
-
-payment = [
-    {
-        Payment_Mode: 'Cash on Delivery',
-        Payment_Date: '14/05/21'
-    },
-    {
-        Payment_Mode: 'UPI',
-        Payment_Date: '15/05/21'
-    }
-];
-
-items = [
-    {
-        Item_ID: 3,
-        Type: 'Graphic T-Shirt',
-        Status: 'available',
-        Price: 600,
-        Item_Condition: '2',
-        IG_Link: 'https://lp2.hm.com/hmgoepprod?set=source[/55/49/5549ef5108f336451b6a9fad793895098d3ebcb1.jpg],origin[dam],category[ladies_tops_printed_tshirts],type[DESCRIPTIVESTILLLIFE],res[y],hmver[1]&call=url[file:/product/main]'
-    },
-    {
-        Item_ID: 1,
-        Type: 'Slip Dress',
-        Status: 'available',
-        Price: 1300,
-        Item_Condition: '3',
-        IG_Link: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fc1%2F05%2Fc105a2d79bee8098404bb9e43b2af3b8305268fe.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]'
-    }
-];
-
-customers = [
-    {
-        Customer_ID: 2,
-        Name: 'Akshat Bhatia',
-        Instagram_Handle: 'akshat.bhatia',
-        Address: '29, Siri Fort Road',
-        State: 'Delhi',
-        Contact: '8586043037',
-        Email_ID: 'akshatbhatia05@gmail.com'
-    },
-    {
-        Customer_ID: 1,
-        Name: 'nishtha wakankar',
-        Instagram_Handle: 'nishthawakankar',
-        Address: 'A67, Sarasvati Vihar',
-        State: 'Delhi',
-        Contact: '9971770749',
-        Email_ID: 'nishthawakankar@yahoo.com'
-    }
-];
-
-orders = [
-    {
-        Order_ID: 101,
-        Order_Date: '14/05/21',
-        Amount: 1000,
-        Delivery_Address: '29, Siri Fort Road',
-        Order_Status: 'Pending'
-    },
-    {
-        Order_ID: 102,
-        Order_Date: '15/05/21',
-        Amount: 600,
-        Delivery_Address: 'N2, Green Park Main',
-        Order_Status: 'Pending'
-    }
-];
 
 exports.addInventory = (req, res) => {
     var item = req.body.type;
